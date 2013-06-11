@@ -1,0 +1,14 @@
+{
+    "activityCollection": [
+        {
+            "id": 3,
+            "name": "Aktiviteter riktade till målgruppen",
+           "amount": 4000
+        }
+    ],
+    "id": 2,
+    "yearfield": 2013,
+    "amount": 9000,
+    "isFirst":false,
+    "isLast":true
+}

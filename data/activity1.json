@@ -1,0 +1,17 @@
+            {
+            	"id": 1,
+	            "name": "Aktiviteter riktade till målgruppen",
+	            "amount": 3000,
+            	"expenseCollection": [
+                {
+                    "id": 1,
+                    "name": "Lön",
+                    "amount": 1000
+                },
+                {
+                    "id": 2,
+                    "name": "Resa",
+                    "amount": 2000
+                }
+            ]
+        }

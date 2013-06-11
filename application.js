@@ -80,45 +80,14 @@ $(function() {
 		 * Constructor
 		 */
 		initialize: function(options) {
-			var self = this;
-			self._currentYear = 2013;
-			self.yearList();
-			$.ajax({
-					url: 'data/years.json',
-					dataType: 'json',
-					data: {},
-					success: function(data) {
-						console.log("Got years from file: " + data);
-						//create Tour collect and Set Data
-						self._years = new YearCollection(data);
-						// TODO set the current year
-						self.yearList();
-					}
-				});
+			this.year(2012);
 
-
-			if (this._tourListView === null) {
-				$.ajax({
-					url: 'data/data.json',
-					dataType: 'json',
-					data: {},
-					success: function(data) {
-						//create Tour collect and Set Data
-						self._tours = new TourCollection(data);
-						self.tourList();
-					}
-				});
-				return this;
-			}
 			return this;
 		},
-
-		yearList: function(){
+		
+		redrawYearHeader: function(){
 			var self = this;
 			// TODO read the _years collection and display the current year.
-			console.log("setting the year to " + self._currentYear);
-			$('#nextYear').attr('href', '#year/' + (self._currentYear+1))
-			$('#prevYear').attr('href', '#year/' + (self._currentYear-1))
 			$('#currentYear').text(""+self._currentYear)
 		},
 
@@ -127,9 +96,24 @@ $(function() {
 			var self = this;
 			// TODO read the _years collection and display the current year.
 			self._currentYear = parseInt(theYear)
-			this.yearList();
+			$.ajax({
+					url: 'data/year'+theYear+'.json',
+					dataType: 'json',
+					data: {},
+					success: function(data) {
+						console.log("Got years from file: " + data);
+						//create Tour collect and Set Data
+						self._years = new YearCollection(data);
+						self.listActivities();
+
+					}
+				});
+			self.redrawYearHeader();
 		},
 
+		listActivities: function(){
+			
+		},
 		tourList: function() {
 			this._tourListView = new TourListView({
 				model: this._tours

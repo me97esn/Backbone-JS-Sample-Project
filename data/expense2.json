@@ -1,0 +1,12 @@
+{
+	"id": 2,
+    "name": "Lön",
+    "amount": 3000,
+    "budgetentryCollection": [
+        {
+            "id": 2,
+            "amount": 1000,
+            "description": "Budgetpost 1"
+        }
+    ]
+}

@@ -55,6 +55,8 @@
         "id": 1,
         "yearfield": 2012,
         "amount": 6000,
+        "isFirst":true,
+        "isLast":false
     },
     {
         "activityCollection": [
@@ -100,5 +102,7 @@
         "id": 2,
         "yearfield": 2013,
         "amount": 9000,
+        "isFirst":false,
+        "isLast":true
     }
 ]
