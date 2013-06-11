@@ -7,8 +7,9 @@
 	 <script src="http://ajax.cdnjs.com/ajax/libs/underscore.js/1.1.4/underscore-min.js"></script>
 	 <script src="http://ajax.cdnjs.com/ajax/libs/backbone.js/0.3.3/backbone-min.js"></script>
 	 <script src="jquery.tmple.min.js"></script>
+
 	 <script src="application.js"></script>
- 	 <link rel="stylesheet" href="main.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	 <link rel="stylesheet" href="main.css" type="text/css" media="screen" title="no title" charset="utf-8">
   </head>
 
   <body>
@@ -17,7 +18,7 @@
   			<a id="prevYear" href="#">prev</a>
   		</div>
   		
-  		<div class="nextYear"><a id="nextYear" href="#">next</a>
+  		<div class="nextYear"><a id="nextYear" href="#" onClick="$('#currentYear').animate({marginLeft:100})">next</a>
   		</div>
   		<div id="currentYear" class="currentYear"><!--The year should be displayed by a javascript function here--></div>
   	</div>
