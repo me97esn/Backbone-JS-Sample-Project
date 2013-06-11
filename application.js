@@ -24,12 +24,38 @@ $(function() {
 		model: Year,
 	});
 
+	var ActivityListView = Backbone.View.extend({
+		el: $('#activityListView'),
+		activityListTemplate: $("#activityListTmpl").template(),
+		render: function() {
+			console.log("calling the render!");
+			var self = this;
+			$.tmpl(self.activityListTemplate, self.model).appendTo(self.el.find('#activityList'));
+			// this.el.fadeOut(0, function() {
+			// 	$('#activityList').empty();
+
+			// 	console.log("model: " + self.model);
+
+			// // $.tmpl(self.tourDetailTemplate, self.model).appendTo(self.el);
+
+			// 	$.tmpl(self.activityListTemplate, self.model.toArray()).appendTo(self.el.find('#activityList'));
+			// 	self.el.fadeIn(500);
+			// });
+			return this;
+		},
+	});
+
 	//tour list view
 	var TourListView = Backbone.View.extend({
 		el: $('#tourListView'),
 		tourListTemplate: $("#tourListTmpl").template(),
 		render: function() {
 			var self = this;
+
+			console.log("model: " + self.model);
+
+			// $.tmpl(self.tourDetailTemplate, self.model).appendTo(self.el);
+
 			this.el.fadeOut(0, function() {
 				$('#tourList').empty();
 				$.tmpl(self.tourListTemplate, self.model.toArray()).appendTo(self.el.find('#tourList'));
@@ -48,11 +74,10 @@ $(function() {
 		tourDetailTemplate: $("#tourDetailTmpl").template(),
 		render: function() {
 			var self = this;
-			this.el.fadeOut(0, function() {
-				self.el.empty();
-				$.tmpl(self.tourDetailTemplate, self.model).appendTo(self.el);
-				self.el.fadeIn(500);
-			});
+			console.log("model: " + self.model);
+
+			$.tmpl(self.tourDetailTemplate, self.model).appendTo(self.el);
+
 			return this;
 		},
 		contactBtnClick: function() {
@@ -66,7 +91,7 @@ $(function() {
 		//store local tourlist object
 		_tourDetailView: null,
 		//store local tourdetail object
-		_tours: null,
+		_year: null,
 		//store local tours collection
 		_currentYear: null,
 
@@ -103,7 +128,7 @@ $(function() {
 					success: function(data) {
 						console.log("Got years from file: " + data);
 						//create Tour collect and Set Data
-						self._years = new YearCollection(data);
+						self._year = new Year(data);
 						self.listActivities();
 
 					}
@@ -112,6 +137,13 @@ $(function() {
 		},
 
 		listActivities: function(){
+			console.log("listActivities function")
+			console.log(this._year.get('activityCollection'));
+			var view = new ActivityListView({
+				model: this._year.get('activityCollection')
+			});
+			console.log(view);
+			view.render();
 			
 		},
 		tourList: function() {
