@@ -6,6 +6,7 @@ $(function() {
 	 * Model
 	 */
 	Tour = Backbone.Model.extend({});
+	Year = Backbone.Model.extend({});
 
 	/**
 	 * Collection
@@ -17,6 +18,10 @@ $(function() {
 		comparator: function(item) {
 			return item.get('pid');
 		}
+	});
+
+	YearCollection = Backbone.Collection.extend({
+		model: Year,
 	});
 
 	//tour list view
@@ -73,6 +78,20 @@ $(function() {
 		 */
 		initialize: function(options) {
 			var self = this;
+
+			$.ajax({
+					url: 'data/years.json',
+					dataType: 'json',
+					data: {},
+					success: function(data) {
+						console.log("Got years from file: " + data);
+						//create Tour collect and Set Data
+						self._years = new YearCollection(data);
+						self.yearList();
+					}
+				});
+
+
 			if (this._tourListView === null) {
 				$.ajax({
 					url: 'data/data.json',
@@ -87,6 +106,10 @@ $(function() {
 				return this;
 			}
 			return this;
+		},
+
+		yearList: function(){
+			console.log("should do the display of the budget here")
 		},
 
 		tourList: function() {
