@@ -83,18 +83,18 @@ $(function() {
 			var self = this;
 			self._currentYear = 2013;
 			self.yearList();
-			// $.ajax({
-			// 		url: 'data/years.json',
-			// 		dataType: 'json',
-			// 		data: {},
-			// 		success: function(data) {
-			// 			console.log("Got years from file: " + data);
-			// 			//create Tour collect and Set Data
-			// 			self._years = new YearCollection(data);
-			// 			// TODO set the current year
-			// 			self.yearList();
-			// 		}
-			// 	});
+			$.ajax({
+					url: 'data/years.json',
+					dataType: 'json',
+					data: {},
+					success: function(data) {
+						console.log("Got years from file: " + data);
+						//create Tour collect and Set Data
+						self._years = new YearCollection(data);
+						// TODO set the current year
+						self.yearList();
+					}
+				});
 
 
 			if (this._tourListView === null) {

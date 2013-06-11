@@ -1,6 +1,104 @@
 [
     {
-    	"2009":{},
-    	"2010":{}
+        "activityCollection": [
+            {
+                "id": 1,
+                "name": "Aktiviteter riktade till målgruppen",
+                "amount": 3000,
+                "expenseCollection": [
+                    {
+                        "id": 1,
+                        "name": "Lön",
+                        "amount": 1000,
+                        "budgetentryCollection": [
+                            {
+                                "id": 1,
+                                "amount": 1000,
+                                "description": "Budgetpost 1"
+                            }
+                        ]
+                    },
+                    {
+                        "id": 2,
+                        "name": "Resa",
+                        "amount": 2000,
+                        "budgetentryCollection": [
+                            {
+                                "id": 2,
+                                "amount": 2000,
+                                "description": "Budgetpost 2"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": 2,
+                "name": "Strategisk påverkan",
+                "amount": 3000,
+                "expenseCollection": [
+                    {
+                        "id": 3,
+                        "name": "Lokal",
+                        "amount": 3000,
+                        "budgetentryCollection": [
+                            {
+                                "id": 3,
+                                "amount": 3000,
+                                "description": "Budgetpost 3"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "id": 1,
+        "yearfield": 2012,
+        "amount": 6000,
+    },
+    {
+        "activityCollection": [
+            {
+                "id": 3,
+                "name": "Aktiviteter riktade till målgruppen",
+               "amount": 4000,
+                "expenseCollection": [
+                    {
+                        "id": 4,
+                        "name": "Lön",
+                        "amount": 4000,
+                        "budgetentryCollection": [
+                            {
+                                "id": 4,
+                                "amount": 4000,
+                                "description": "Budgetpost 4"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": 4,
+                "name": "Indirekta utgifter",
+                "amount": 5000,
+                "expenseCollection": [
+                    {
+                        "id": 5,
+                        "name": "Indirekta utgifter",
+                        "amount": 5000,
+                        "budgetentryCollection": [
+                            {
+                                "id": 5,
+                                "amount": 5000,
+                                "description": "Budgetpost 5"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "id": 2,
+        "yearfield": 2013,
+        "amount": 9000,
     }
 ]

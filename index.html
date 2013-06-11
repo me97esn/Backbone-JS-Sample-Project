@@ -10,6 +10,15 @@
 
 	 <script src="application.js"></script>
 	 <link rel="stylesheet" href="main.css" type="text/css" media="screen" title="no title" charset="utf-8">
+  <script type="text/javascript">
+  jQuery.fn.center = function () {
+    // this.css("position","absolute");
+    var left = ( $(window).width() - this.width() ) / 2+$(window).scrollLeft() + "px";
+    this.animate({left: left}, function(){
+        $(this).css({position: 'static', margin: '0 auto'});
+    });
+    return this;
+}</script>
   </head>
 
   <body>
@@ -18,7 +27,7 @@
   			<a id="prevYear" href="#">prev</a>
   		</div>
   		
-  		<div class="nextYear"><a id="nextYear" href="#" onClick="$('#currentYear').animate({marginLeft:100})">next</a>
+  		<div class="nextYear"><a id="nextYear" href="#">next</a>
   		</div>
   		<div id="currentYear" class="currentYear"><!--The year should be displayed by a javascript function here--></div>
   	</div>
