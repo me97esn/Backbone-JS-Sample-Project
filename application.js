@@ -30,6 +30,7 @@ $(function() {
 		render: function() {
 			console.log("calling the render!");
 			var self = this;
+			$('#activityList').empty();
 			$.tmpl(self.activityListTemplate, self.model).appendTo(self.el.find('#activityList'));
 			// this.el.fadeOut(0, function() {
 			// 	$('#activityList').empty();
