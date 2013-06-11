@@ -68,9 +68,12 @@ $(function() {
 		//store local tourdetail object
 		_tours: null,
 		//store local tours collection
+		_currentYear: null,
+
 		routes: {
 			"": "tourList",
 			"tourDetail/:id": "tourDetail",
+			"year/:year": "year",
 		},
 
 		/*
@@ -78,18 +81,20 @@ $(function() {
 		 */
 		initialize: function(options) {
 			var self = this;
-
-			$.ajax({
-					url: 'data/years.json',
-					dataType: 'json',
-					data: {},
-					success: function(data) {
-						console.log("Got years from file: " + data);
-						//create Tour collect and Set Data
-						self._years = new YearCollection(data);
-						self.yearList();
-					}
-				});
+			self._currentYear = 2013;
+			self.yearList();
+			// $.ajax({
+			// 		url: 'data/years.json',
+			// 		dataType: 'json',
+			// 		data: {},
+			// 		success: function(data) {
+			// 			console.log("Got years from file: " + data);
+			// 			//create Tour collect and Set Data
+			// 			self._years = new YearCollection(data);
+			// 			// TODO set the current year
+			// 			self.yearList();
+			// 		}
+			// 	});
 
 
 			if (this._tourListView === null) {
@@ -109,7 +114,20 @@ $(function() {
 		},
 
 		yearList: function(){
-			console.log("should do the display of the budget here")
+			var self = this;
+			// TODO read the _years collection and display the current year.
+			console.log("setting the year to " + self._currentYear);
+			$('#nextYear').attr('href', '#year/' + (self._currentYear+1))
+			$('#prevYear').attr('href', '#year/' + (self._currentYear-1))
+			$('#currentYear').text(""+self._currentYear)
+		},
+
+
+		year: function(theYear){
+			var self = this;
+			// TODO read the _years collection and display the current year.
+			self._currentYear = parseInt(theYear)
+			this.yearList();
 		},
 
 		tourList: function() {
