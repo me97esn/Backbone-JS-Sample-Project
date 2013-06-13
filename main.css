@@ -1,6 +1,20 @@
 body {
 	background-color:#ffffff;
 }
+.activityListView{
+
+float:left;
+margin-left: 30px;
+margin-top: 20px;
+
+}
+
+.expenseList {
+float:left;
+margin-left: 30px;
+margin-top: 20px;
+}
+
 .prevYear {
 
 color: #333333;

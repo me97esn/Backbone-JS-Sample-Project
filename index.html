@@ -32,35 +32,32 @@
   		<div id="currentYear" class="currentYear"><!--The year should be displayed by a javascript function here--></div>
   	</div>
 
-    <div id="activityListView">
-      <ul id="activityList">
-
-      
-    
+    <div class="activityListView" id="activityListView">
+      <div id="activityList" class="activityList">    
       <script id="activityListTmpl" type="text/x-jquery-tmpl">
-            <li class="viewDetailBtn"> 
+        <div>
               <a href="#activity/${id}">
                 <div class="item-name">${name}</div> 
                 <div class="item-price">${amount}</div>
-              </a>
-
-            </li>
+              <div id="expenseInActivity${id}"> </div></a>
+              
+      </div>
       </script>
-  </ul>
+    </div>
+  </div>
     
-    <div id="expenseListView">
-      <ul id="expenseList">
+    <div id="expenseListView" class="expenseListView">
+      <div id="expenseList" class="expenseList">
     <script id="expenseListTmpl" type="text/x-jquery-tmpl">
-            <li class="viewDetailBtn"> 
+              
               <a href="#expense/${id}">
                 <div class="item-name">${name}</div> 
                 <div class="item-price">${amount}</div>
               </a>
-            </li>
+              
       </script>
-
-    </ul>
-    
+      </div>
+    </div>
   </body>
 
 </html>

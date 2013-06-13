@@ -58,8 +58,10 @@ $(function() {
 			var self = this;
 			console.log("calling the render of ExpenseListView with data: " + self.model);
 			$('#expenseList').empty();
-			$.tmpl(self.expenseListTemplate, self.model).appendTo(self.el.find('#expenseList'));
+			$.tmpl(self.expenseListTemplate, self.model.get('expenseCollection') ).appendTo(self.el.find('#expenseList'));
 			console.log("after calling the render of ExpenseListView!");
+			console.log("activity: " + self.model.get('id'));
+			$("#expenseInActivity" + self.model.get('id')).html( $("#expenseListView") );
 			return this;
 		},
 	});
@@ -167,7 +169,7 @@ $(function() {
 						console.log("Got activity from file: " + data);
 						// TODO detta ska inte sparas i enb variable, eller så måste den tömmas vid tex year()
 						self._activity = new Activity(data);
-						self.listActivities();
+						self.listActivities( new Activity(data) );
 
 					}
 				});
@@ -185,9 +187,10 @@ $(function() {
 			if(this._activity != null){
 				console.log("list expenses...");
 				var view2 = new ExpenseListView({
-					model: this._activity.get('expenseCollection')
+					model: this._activity
 
 				});
+
 				view2.render();
 			}
 
@@ -195,16 +198,7 @@ $(function() {
 			
 		},
 
-		listExpenses: function(data){
-			console.log("listExpenses function")
-			
-			var view = new ExpenseListView({
-				model: new ExpenseC.get('activityCollection')
-			});
-			console.log(view);
-			view.render();
-			
-		},
+		
 		tourList: function() {
 			this._tourListView = new TourListView({
 				model: this._tours
