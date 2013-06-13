@@ -1,0 +1,11 @@
+            {
+                "id": 3,
+                "name": "Aktiviteter riktade till målgruppen",
+                "amount": 2000,
+                "expenseCollection": [
+                {
+                    "id": 4,
+                    "name": "Lön",
+                    "amount": 11000
+                }
+            ]}
