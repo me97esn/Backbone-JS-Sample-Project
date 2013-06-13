@@ -37,31 +37,22 @@ $(function() {
 			var self = this;
 			$('#activityList').empty();
 			$.tmpl(self.activityListTemplate, self.model).appendTo(self.el.find('#activityList'));
-			// this.el.fadeOut(0, function() {
-			// 	$('#activityList').empty();
 
-			// 	console.log("model: " + self.model);
-
-			// // $.tmpl(self.tourDetailTemplate, self.model).appendTo(self.el);
-
-			// 	$.tmpl(self.activityListTemplate, self.model.toArray()).appendTo(self.el.find('#activityList'));
-			// 	self.el.fadeIn(500);
-			// });
 			return this;
 		},
 	});
 
 	var ExpenseListView = Backbone.View.extend({
-		el: $('#expenseListView'),
+		// el: "#expenseInActivity" + self.model.get('id'),
 		expenseListTemplate: $("#expenseListTmpl").template(),
 		render: function() {
 			var self = this;
 			console.log("calling the render of ExpenseListView with data: " + self.model);
-			$('#expenseList').empty();
-			$.tmpl(self.expenseListTemplate, self.model.get('expenseCollection') ).appendTo(self.el.find('#expenseList'));
-			console.log("after calling the render of ExpenseListView!");
-			console.log("activity: " + self.model.get('id'));
-			$("#expenseInActivity" + self.model.get('id')).html( $("#expenseListView") );
+
+			$.tmpl(
+				self.expenseListTemplate, 
+				self.model.get('expenseCollection') )
+			.appendTo(self.el);
 			return this;
 		},
 	});
@@ -187,8 +178,8 @@ $(function() {
 			if(this._activity != null){
 				console.log("list expenses...");
 				var view2 = new ExpenseListView({
-					model: this._activity
-
+					model: this._activity,
+					el: "#expenseInActivity" + this._activity.get('id')
 				});
 
 				view2.render();
