@@ -37,9 +37,14 @@
         
       <script id="activityListTmpl" type="text/x-jquery-tmpl">
             <li class="viewDetailBtn"> 
-              <div class="item-name">${name}</div> 
-              <div class="item-price">${amount}</div>
-          </li>
+              <a href="#activity/${id}">
+                <div class="item-name">${name}</div> 
+                <div class="item-price">${amount}</div>
+              </a>
+
+              <div class="expense" id="expense_${id}" style="display: none">
+              </div>
+            </li>
       </script>
     </ul>
     </div>

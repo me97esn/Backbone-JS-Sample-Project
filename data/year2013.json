@@ -1,9 +1,14 @@
 {
     "activityCollection": [
         {
+            "id": 2,
+            "name": "NÅT ANNAT",
+           "amount": 4000
+        },
+        {
             "id": 3,
             "name": "Aktiviteter riktade till målgruppen",
-           "amount": 4000
+           "amount": 40000
         }
     ],
     "id": 2,
