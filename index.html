@@ -34,7 +34,9 @@
 
     <div id="activityListView">
       <ul id="activityList">
-        
+
+      
+    
       <script id="activityListTmpl" type="text/x-jquery-tmpl">
             <li class="viewDetailBtn"> 
               <a href="#activity/${id}">
@@ -42,12 +44,23 @@
                 <div class="item-price">${amount}</div>
               </a>
 
-              <div class="expense" id="expense_${id}" style="display: none">
-              </div>
             </li>
       </script>
+  </ul>
+    
+    <div id="expenseListView">
+      <ul id="expenseList">
+    <script id="expenseListTmpl" type="text/x-jquery-tmpl">
+            <li class="viewDetailBtn"> 
+              <a href="#expense/${id}">
+                <div class="item-name">${name}</div> 
+                <div class="item-price">${amount}</div>
+              </a>
+            </li>
+      </script>
+
     </ul>
-    </div>
+    
   </body>
 
 </html>

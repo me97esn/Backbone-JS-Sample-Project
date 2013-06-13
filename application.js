@@ -7,6 +7,7 @@ $(function() {
 	 */
 	Tour = Backbone.Model.extend({});
 	Year = Backbone.Model.extend({});
+	Activity = Backbone.Model.extend({});
 
 	/**
 	 * Collection
@@ -22,6 +23,10 @@ $(function() {
 
 	YearCollection = Backbone.Collection.extend({
 		model: Year,
+	});
+
+	ActivityCollection = Backbone.Collection.extend({
+		model: Activity,
 	});
 
 	var ActivityListView = Backbone.View.extend({
@@ -42,6 +47,19 @@ $(function() {
 			// 	$.tmpl(self.activityListTemplate, self.model.toArray()).appendTo(self.el.find('#activityList'));
 			// 	self.el.fadeIn(500);
 			// });
+			return this;
+		},
+	});
+
+	var ExpenseListView = Backbone.View.extend({
+		el: $('#expenseListView'),
+		expenseListTemplate: $("#expenseListTmpl").template(),
+		render: function() {
+			var self = this;
+			console.log("calling the render of ExpenseListView with data: " + self.model);
+			$('#expenseList').empty();
+			$.tmpl(self.expenseListTemplate, self.model).appendTo(self.el.find('#expenseList'));
+			console.log("after calling the render of ExpenseListView!");
 			return this;
 		},
 	});
@@ -100,6 +118,7 @@ $(function() {
 			"": "tourList",
 			"tourDetail/:id": "tourDetail",
 			"year/:year": "year",
+			"activity/:activity_id": "activity",
 		},
 
 		/*
@@ -137,11 +156,50 @@ $(function() {
 			self.redrawYearHeader();
 		},
 
+		activity: function(activity_id){
+			var self = this;
+			console.log("Get the activity "+ activity_id +" with rest...");
+			$.ajax({
+					url: 'data/activity'+activity_id+'.json',
+					dataType: 'json',
+					data: {},
+					success: function(data) {
+						console.log("Got activity from file: " + data);
+						// TODO detta ska inte sparas i enb variable, eller så måste den tömmas vid tex year()
+						self._activity = new Activity(data);
+						self.listActivities();
+
+					}
+				});
+			self.redrawYearHeader();
+		},
+
 		listActivities: function(){
 			console.log("listActivities function")
 			console.log(this._year.get('activityCollection'));
 			var view = new ActivityListView({
 				model: this._year.get('activityCollection')
+			});
+			console.log(view);
+			view.render();
+			if(this._activity != null){
+				console.log("list expenses...");
+				var view2 = new ExpenseListView({
+					model: this._activity.get('expenseCollection')
+
+				});
+				view2.render();
+			}
+
+
+			
+		},
+
+		listExpenses: function(data){
+			console.log("listExpenses function")
+			
+			var view = new ExpenseListView({
+				model: new ExpenseC.get('activityCollection')
 			});
 			console.log(view);
 			view.render();
