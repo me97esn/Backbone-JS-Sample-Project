@@ -1,6 +1,11 @@
 body {
 	background-color:#ffffff;
 }
+.expense{
+float:left;
+margin-left: 50px;
+margin-top: 0px;
+}
 .activityListView{
 
 float:left;
