@@ -30,13 +30,13 @@ $(function() {
 	});
 
 	var ActivityListView = Backbone.View.extend({
-		el: $('#activityListView'),
+		el: $('#activityList'),
 		activityListTemplate: $("#activityListTmpl").template(),
 		render: function() {
 			console.log("calling the render!");
 			var self = this;
 			$('#activityList').empty();
-			$.tmpl(self.activityListTemplate, self.model).appendTo(self.el.find('#activityList'));
+			$.tmpl(self.activityListTemplate, self.model).appendTo(self.el);
 
 			return this;
 		},
@@ -57,48 +57,8 @@ $(function() {
 		},
 	});
 
-	//tour list view
-	var TourListView = Backbone.View.extend({
-		el: $('#tourListView'),
-		tourListTemplate: $("#tourListTmpl").template(),
-		render: function() {
-			var self = this;
-
-			console.log("model: " + self.model);
-
-			// $.tmpl(self.tourDetailTemplate, self.model).appendTo(self.el);
-
-			this.el.fadeOut(0, function() {
-				$('#tourList').empty();
-				$.tmpl(self.tourListTemplate, self.model.toArray()).appendTo(self.el.find('#tourList'));
-				self.el.fadeIn(500);
-			});
-			return this;
-		},
-	});
-
-	//tour list view
-	var TourDetailView = Backbone.View.extend({
-		el: $('#tourDetailView'),
-		events: {
-			"click .contact": "contactBtnClick",
-		},
-		tourDetailTemplate: $("#tourDetailTmpl").template(),
-		render: function() {
-			var self = this;
-			console.log("model: " + self.model);
-
-			$.tmpl(self.tourDetailTemplate, self.model).appendTo(self.el);
-
-			return this;
-		},
-		contactBtnClick: function() {
-			alert('Thank you for contacting us');
-		}
-	});
-
 	//controller
-	var Application = Backbone.Controller.extend({
+	var Application = Backbone.Router.extend({
 		_tourListView: null,
 		//store local tourlist object
 		_tourDetailView: null,
@@ -112,6 +72,7 @@ $(function() {
 			"tourDetail/:id": "tourDetail",
 			"year/:year": "year",
 			"activity/:activity_id": "activity",
+			"y/:theYear(/:activity_id)":"yearActivity",
 		},
 
 		/*
@@ -129,6 +90,11 @@ $(function() {
 			$('#currentYear').text(""+self._currentYear)
 		},
 
+		yearActivity: function(theYear, activity_id){
+			console.log("theYear:" + theYear + ", activity_id: " + activity_id);
+			this.year(theYear);
+			this.activity(activity_id);
+		},
 
 		year: function(theYear){
 			var self = this;
