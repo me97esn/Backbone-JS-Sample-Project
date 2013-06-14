@@ -9,7 +9,7 @@
 	 <script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
 	 <script src="jquery.tmple.min.js"></script>
 
-	 <script src="js/application.js"></script>
+	 <script src="application.js"></script>
 	 <link rel="stylesheet" href="main.css" type="text/css" media="screen" title="no title" charset="utf-8">
   <script type="text/javascript">
   jQuery.fn.center = function () {
