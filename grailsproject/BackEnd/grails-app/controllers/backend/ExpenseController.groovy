@@ -1,5 +1,6 @@
 package backend
 
+import grails.converters.JSON
 import org.springframework.dao.DataIntegrityViolationException
 
 class ExpenseController {
@@ -32,13 +33,21 @@ class ExpenseController {
 
     def show(Long id) {
         def expenseInstance = Expense.get(id)
-        if (!expenseInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'expense.label', default: 'Expense'), id])
-            redirect(action: "list")
-            return
+        withFormat {
+            html {
+                if (!expenseInstance) {
+                    flash.message = message(code: 'default.not.found.message', args: [message(code: 'year.label', default: 'Year'), id])
+                    redirect(action: "list")
+                    return
+                }
+                [expenseInstance: expenseInstance]
+            }
+            json {
+                response.setHeader("Access-Control-Allow-Origin", "*")
+                render expenseInstance as JSON
+            }
         }
 
-        [expenseInstance: expenseInstance]
     }
 
     def edit(Long id) {

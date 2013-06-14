@@ -2240,3 +2240,152 @@ groovy.lang.MissingPropertyException: No such property: yearInstance for class: 
 	at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:895)
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:918)
 	at java.lang.Thread.run(Thread.java:680)
+2013-06-14 15:36:57,025 [http-bio-8080-exec-3] ERROR StackTrace  - Full Stack Trace:
+org.codehaus.groovy.control.MultipleCompilationErrorsException: startup failed:
+/Users/emilsandin/Documents/workspace/git/Backbone-JS-Sample-Project/grailsproject/BackEnd/grails-app/controllers/backend/ExpenseController.groovy: 46: unable to resolve class JSON 
+ @ line 46, column 40.
+                   render expenseInstance as JSON
+                                          ^
+
+1 error
+
+	at org.codehaus.groovy.control.ErrorCollector.failIfErrors(ErrorCollector.java:309)
+	at org.codehaus.groovy.control.CompilationUnit.applyToSourceUnits(CompilationUnit.java:918)
+	at org.codehaus.groovy.control.CompilationUnit.doPhaseOperation(CompilationUnit.java:566)
+	at org.codehaus.groovy.control.CompilationUnit.compile(CompilationUnit.java:515)
+	at org.codehaus.groovy.control.CompilationUnit.compile(CompilationUnit.java:498)
+	at org.codehaus.groovy.tools.FileSystemCompiler.compile(FileSystemCompiler.java:57)
+	at org.codehaus.groovy.tools.FileSystemCompiler.doCompilation(FileSystemCompiler.java:213)
+	at org.codehaus.groovy.ant.Groovyc.runCompiler(Groovyc.java:947)
+	at org.codehaus.groovy.ant.Groovyc.compile(Groovyc.java:994)
+	at org.codehaus.groovy.grails.compiler.Grailsc.compile(Grailsc.java:79)
+	at org.codehaus.groovy.ant.Groovyc.execute(Groovyc.java:630)
+	at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+	at sun.reflect.GeneratedMethodAccessor69.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1249)
+	at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+	at groovy.util.AntBuilder.performTask(AntBuilder.java:260)
+	at groovy.util.AntBuilder.nodeCompleted(AntBuilder.java:220)
+	at groovy.util.BuilderSupport.doInvokeMethod(BuilderSupport.java:147)
+	at groovy.util.AntBuilder.doInvokeMethod(AntBuilder.java:170)
+	at groovy.util.BuilderSupport.invokeMethod(BuilderSupport.java:64)
+	at org.codehaus.gant.GantBuilder.invokeMethod(GantBuilder.java:99)
+	at org.codehaus.groovy.runtime.callsite.PogoMetaClassSite.call(PogoMetaClassSite.java:45)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:120)
+	at org.codehaus.groovy.grails.compiler.GrailsProjectCompiler.compile(GrailsProjectCompiler.groovy:268)
+	at org.codehaus.groovy.grails.compiler.GrailsProjectCompiler$compile$0.callCurrent(Unknown Source)
+	at org.codehaus.groovy.grails.compiler.GrailsProjectCompiler.compile(GrailsProjectCompiler.groovy:238)
+	at org.codehaus.groovy.grails.compiler.GrailsProjectCompiler.compileAll(GrailsProjectCompiler.groovy:230)
+	at org.codehaus.groovy.grails.compiler.GrailsProjectWatcher.compileIfSource(GrailsProjectWatcher.java:272)
+	at org.codehaus.groovy.grails.compiler.GrailsProjectWatcher.access$300(GrailsProjectWatcher.java:46)
+	at org.codehaus.groovy.grails.compiler.GrailsProjectWatcher$1.onChange(GrailsProjectWatcher.java:153)
+	at org.codehaus.groovy.grails.compiler.DirectoryWatcher.fireOnChange(DirectoryWatcher.java:162)
+	at org.codehaus.groovy.grails.compiler.DirectoryWatcher.run(DirectoryWatcher.java:144)
+	at org.codehaus.groovy.grails.compiler.GrailsProjectWatcher.run(GrailsProjectWatcher.java:177)
+2013-06-14 15:36:57,026 [http-bio-8080-exec-3] ERROR StackTrace  - Full Stack Trace:
+org.codehaus.groovy.control.MultipleCompilationErrorsException: startup failed:
+/Users/emilsandin/Documents/workspace/git/Backbone-JS-Sample-Project/grailsproject/BackEnd/grails-app/controllers/backend/ExpenseController.groovy: 46: unable to resolve class JSON 
+ @ line 46, column 40.
+                   render expenseInstance as JSON
+                                          ^
+
+1 error
+
+	at org.codehaus.groovy.control.ErrorCollector.failIfErrors(ErrorCollector.java:309)
+	at org.codehaus.groovy.control.CompilationUnit.applyToSourceUnits(CompilationUnit.java:918)
+	at org.codehaus.groovy.control.CompilationUnit.doPhaseOperation(CompilationUnit.java:566)
+	at org.codehaus.groovy.control.CompilationUnit.compile(CompilationUnit.java:515)
+	at org.codehaus.groovy.control.CompilationUnit.compile(CompilationUnit.java:498)
+	at org.codehaus.groovy.tools.FileSystemCompiler.compile(FileSystemCompiler.java:57)
+	at org.codehaus.groovy.tools.FileSystemCompiler.doCompilation(FileSystemCompiler.java:213)
+	at org.codehaus.groovy.ant.Groovyc.runCompiler(Groovyc.java:947)
+	at org.codehaus.groovy.ant.Groovyc.compile(Groovyc.java:994)
+	at org.codehaus.groovy.ant.Groovyc.execute(Groovyc.java:630)
+	at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+	at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+2013-06-14 15:36:57,026 [http-bio-8080-exec-3] ERROR StackTrace  - Full Stack Trace:
+org.codehaus.groovy.control.MultipleCompilationErrorsException: startup failed:
+/Users/emilsandin/Documents/workspace/git/Backbone-JS-Sample-Project/grailsproject/BackEnd/grails-app/controllers/backend/ExpenseController.groovy: 46: unable to resolve class JSON 
+ @ line 46, column 40.
+                   render expenseInstance as JSON
+                                          ^
+
+1 error
+
+	at org.codehaus.groovy.control.ErrorCollector.failIfErrors(ErrorCollector.java:309)
+	at org.codehaus.groovy.control.CompilationUnit.applyToSourceUnits(CompilationUnit.java:918)
+	at org.codehaus.groovy.control.CompilationUnit.doPhaseOperation(CompilationUnit.java:566)
+	at org.codehaus.groovy.control.CompilationUnit.compile(CompilationUnit.java:515)
+	at org.codehaus.groovy.control.CompilationUnit.compile(CompilationUnit.java:498)
+	at org.codehaus.groovy.tools.FileSystemCompiler.compile(FileSystemCompiler.java:57)
+	at org.codehaus.groovy.tools.FileSystemCompiler.doCompilation(FileSystemCompiler.java:213)
+	at org.codehaus.groovy.ant.Groovyc.runCompiler(Groovyc.java:947)
+	at org.codehaus.groovy.ant.Groovyc.compile(Groovyc.java:994)
+	at org.codehaus.groovy.ant.Groovyc.execute(Groovyc.java:630)
+	at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+	at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+2013-06-14 15:36:57,026 [http-bio-8080-exec-3] ERROR StackTrace  - Full Stack Trace:
+org.codehaus.groovy.control.MultipleCompilationErrorsException: startup failed:
+/Users/emilsandin/Documents/workspace/git/Backbone-JS-Sample-Project/grailsproject/BackEnd/grails-app/controllers/backend/ExpenseController.groovy: 46: unable to resolve class JSON 
+ @ line 46, column 40.
+                   render expenseInstance as JSON
+                                          ^
+
+1 error
+
+	at org.codehaus.groovy.control.ErrorCollector.failIfErrors(ErrorCollector.java:309)
+	at org.codehaus.groovy.control.CompilationUnit.applyToSourceUnits(CompilationUnit.java:918)
+	at org.codehaus.groovy.control.CompilationUnit.doPhaseOperation(CompilationUnit.java:566)
+	at org.codehaus.groovy.control.CompilationUnit.compile(CompilationUnit.java:515)
+	at org.codehaus.groovy.control.CompilationUnit.compile(CompilationUnit.java:498)
+	at org.codehaus.groovy.tools.FileSystemCompiler.compile(FileSystemCompiler.java:57)
+	at org.codehaus.groovy.tools.FileSystemCompiler.doCompilation(FileSystemCompiler.java:213)
+	at org.codehaus.groovy.ant.Groovyc.runCompiler(Groovyc.java:947)
+	at org.codehaus.groovy.ant.Groovyc.compile(Groovyc.java:994)
+	at org.codehaus.groovy.ant.Groovyc.execute(Groovyc.java:630)
+	at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+	at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+2013-06-14 15:36:57,051 [http-bio-8080-exec-3] ERROR StackTrace  - Full Stack Trace:
+org.codehaus.groovy.control.MultipleCompilationErrorsException: startup failed:
+/Users/emilsandin/Documents/workspace/git/Backbone-JS-Sample-Project/grailsproject/BackEnd/grails-app/controllers/backend/ExpenseController.groovy: 46: unable to resolve class JSON 
+ @ line 46, column 40.
+                   render expenseInstance as JSON
+                                          ^
+
+1 error
+
+	at org.codehaus.groovy.control.ErrorCollector.failIfErrors(ErrorCollector.java:309)
+	at org.codehaus.groovy.control.CompilationUnit.applyToSourceUnits(CompilationUnit.java:918)
+	at org.codehaus.groovy.control.CompilationUnit.doPhaseOperation(CompilationUnit.java:566)
+	at org.codehaus.groovy.control.CompilationUnit.compile(CompilationUnit.java:515)
+	at org.codehaus.groovy.control.CompilationUnit.compile(CompilationUnit.java:498)
+	at org.codehaus.groovy.tools.FileSystemCompiler.compile(FileSystemCompiler.java:57)
+	at org.codehaus.groovy.tools.FileSystemCompiler.doCompilation(FileSystemCompiler.java:213)
+	at org.codehaus.groovy.ant.Groovyc.runCompiler(Groovyc.java:947)
+	at org.codehaus.groovy.ant.Groovyc.compile(Groovyc.java:994)
+	at org.codehaus.groovy.ant.Groovyc.execute(Groovyc.java:630)
+	at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+	at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+2013-06-14 15:36:57,051 [http-bio-8080-exec-3] ERROR StackTrace  - Full Stack Trace:
+org.codehaus.groovy.control.MultipleCompilationErrorsException: startup failed:
+/Users/emilsandin/Documents/workspace/git/Backbone-JS-Sample-Project/grailsproject/BackEnd/grails-app/controllers/backend/ExpenseController.groovy: 46: unable to resolve class JSON 
+ @ line 46, column 40.
+                   render expenseInstance as JSON
+                                          ^
+
+1 error
+
+	at org.codehaus.groovy.control.ErrorCollector.failIfErrors(ErrorCollector.java:309)
+	at org.codehaus.groovy.control.CompilationUnit.applyToSourceUnits(CompilationUnit.java:918)
+	at org.codehaus.groovy.control.CompilationUnit.doPhaseOperation(CompilationUnit.java:566)
+	at org.codehaus.groovy.control.CompilationUnit.compile(CompilationUnit.java:515)
+	at org.codehaus.groovy.control.CompilationUnit.compile(CompilationUnit.java:498)
+	at org.codehaus.groovy.tools.FileSystemCompiler.compile(FileSystemCompiler.java:57)
+	at org.codehaus.groovy.tools.FileSystemCompiler.doCompilation(FileSystemCompiler.java:213)
+	at org.codehaus.groovy.ant.Groovyc.runCompiler(Groovyc.java:947)
+	at org.codehaus.groovy.ant.Groovyc.compile(Groovyc.java:994)
+	at org.codehaus.groovy.ant.Groovyc.execute(Groovyc.java:630)
+	at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+	at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
