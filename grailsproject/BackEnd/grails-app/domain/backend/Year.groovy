@@ -20,5 +20,6 @@ class Year {
 //    boolean isFirst, isLast
     float amount
     static constraints = {
+        activityCollection cascade: 'all-delete-orphan'
     }
 }

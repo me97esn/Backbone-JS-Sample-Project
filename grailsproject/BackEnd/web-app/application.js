@@ -211,23 +211,6 @@ $(function() {
 				view3.render();
 			}
 		},
-
-
-
-		
-		tourList: function() {
-			this._tourListView = new TourListView({
-				model: this._tours
-			});
-			this._tourListView.render();
-		},
-
-		tourDetail: function(id) {
-			this._tourDetailView = new TourDetailView({
-				model: this._tours.at(id)
-			});
-			this._tourDetailView.render();
-		}
 	});
 
 	//instantiate Application object

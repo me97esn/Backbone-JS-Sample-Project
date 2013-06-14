@@ -2,6 +2,7 @@ class UrlMappings {
 
     static mappings = {
         "/rest/year/$id?"(resource:"year")
+        "/rest/activity/$id?"(resource:"activity")
 
         "/$controller/$action?/$id?"{
             constraints {

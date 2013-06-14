@@ -1,5 +1,6 @@
 package backend
 
+import grails.converters.JSON
 import org.springframework.dao.DataIntegrityViolationException
 
 class ActivityController {
@@ -32,10 +33,18 @@ class ActivityController {
 
     def show(Long id) {
         def activityInstance = Activity.get(id)
-        if (!activityInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'activity.label', default: 'Activity'), id])
-            redirect(action: "list")
-            return
+        withFormat {
+            html {
+                if (!activityInstance) {
+                    flash.message = message(code: 'default.not.found.message', args: [message(code: 'year.label', default: 'Year'), id])
+                    redirect(action: "list")
+                    return
+                }
+            }
+            json {
+                response.setHeader("Access-Control-Allow-Origin", "*")
+                render activityInstance as JSON
+            }
         }
 
         [activityInstance: activityInstance]
