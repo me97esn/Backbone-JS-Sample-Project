@@ -89,16 +89,16 @@ $(function() {
 		redrawYearHeader: function(){
 			var self = this;
 			// TODO read the _years collection and display the current year.
-			$('#currentYear').fadeOut(function(){
-				$('#currentYear').text(""+self._currentYear)
-			});
-			$('#currentYear').fadeIn();
+			$('#currentYear').text(""+self._currentYear)
+			
 		},
 
 		yearActivity: function(theYear, activity_id){
 			console.log("theYear:" + theYear + ", activity_id: " + activity_id);
 			this.year(theYear);
-			this.activity(activity_id);
+			if(activity_id){
+				this.activity(activity_id);
+			}
 		},
 
 		year: function(theYear){
