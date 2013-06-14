@@ -72,7 +72,7 @@ $(function() {
 			"tourDetail/:id": "tourDetail",
 			"year/:year": "year",
 			"activity/:activity_id": "activity",
-			"y/:theYear(/:activity_id)":"yearActivity",
+			"y/:theYear(/activity/:activity_id)":"yearActivity",
 		},
 
 		/*
