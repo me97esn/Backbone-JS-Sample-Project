@@ -62,9 +62,17 @@ $(function() {
 	});
 
 	var BudgetEntryListView = Backbone.View.extend({
+		el: '#budgetEntryList',
 		template: $("#budgetEntryListTmpl").template(),
 		render: function() {
-			console.log("TODO build the render!");
+			var self = this;
+			console.log("Rendering the BudgetEntryListView with data: " + self.model);
+			$('#budgetEntryList').empty();
+			$.tmpl(
+				self.template, 
+				self.model.get('budgetentryCollection') )
+			.appendTo(self.el);
+			return this;
 		},
 	});
 
@@ -143,11 +151,10 @@ $(function() {
 					success: function(data) {
 						console.log("Got activity from file: " + data);
 						// TODO detta ska inte sparas i enb variable, eller så måste den tömmas vid tex year()
-						self.listExpenses( new Expense(data) );
+						self.listActivities( new Expense(data) );
 
 					}
 				});
-			self.redrawYearHeader();
 		},
 		
 		activity: function(activity_id){
@@ -160,15 +167,15 @@ $(function() {
 					success: function(data) {
 						console.log("Got activity from file: " + data);
 						// TODO detta ska inte sparas i enb variable, eller så måste den tömmas vid tex year()
-						
-						self.listActivities( new Activity(data) );
+						self._activity = new Activity(data);
+						self.listActivities(  );
 
 					}
 				});
 			self.redrawYearHeader();
 		},
 
-		listActivities: function( activity ){
+		listActivities: function( expense ){
 			console.log("listActivities function")
 			console.log(this._year.get('activityCollection'));
 			var view = new ActivityListView({
@@ -176,19 +183,27 @@ $(function() {
 			});
 			console.log(view);
 			view.render();
-			if(activity != null){
+			if(this._activity != null){
 				console.log("list expenses...");
 				var view2 = new ExpenseListView({
-					model: activity,
-					el: "#expenseInActivity" + activity.get('id')
+					model: this._activity,
+					el: "#expenseInActivity" + this._activity.get('id')
 				});
 
 				view2.render();
 			}
+			console.log("expense: " + expense);
+			if(expense != null){
 
+				var view3 = new BudgetEntryListView({
+					model: expense
+				});
 
-			
+				view3.render();
+			}
 		},
+
+
 
 		
 		tourList: function() {
