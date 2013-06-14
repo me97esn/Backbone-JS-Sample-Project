@@ -62,10 +62,12 @@ $(function() {
 	});
 
 	var BudgetEntryListView = Backbone.View.extend({
-		el: '#budgetEntryList',
+		// el: '#budgetEntryList',
 		template: $("#budgetEntryListTmpl").template(),
 		render: function() {
 			var self = this;
+			
+			console.log("el: " + self.el);			
 			console.log("Rendering the BudgetEntryListView with data: " + self.model);
 			$('#budgetEntryList').empty();
 			$.tmpl(
@@ -196,6 +198,7 @@ $(function() {
 			if(expense != null){
 
 				var view3 = new BudgetEntryListView({
+					el: "#budgetEntryInExpense" + expense.get('id'),
 					model: expense
 				});
 
