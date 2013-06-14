@@ -52,7 +52,9 @@ $(function() {
 			$.tmpl(
 				self.expenseListTemplate, 
 				self.model.get('expenseCollection') )
-			.appendTo(self.el);
+			.appendTo(self.el)
+			.hide()
+			.fadeIn();
 			return this;
 		},
 	});
@@ -87,7 +89,10 @@ $(function() {
 		redrawYearHeader: function(){
 			var self = this;
 			// TODO read the _years collection and display the current year.
-			$('#currentYear').text(""+self._currentYear)
+			$('#currentYear').fadeOut(function(){
+				$('#currentYear').text(""+self._currentYear)
+			});
+			$('#currentYear').fadeIn();
 		},
 
 		yearActivity: function(theYear, activity_id){
