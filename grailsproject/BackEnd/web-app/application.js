@@ -129,8 +129,7 @@ $(function() {
 			// TODO read the _years collection and display the current year.
 			self._currentYear = parseInt(theYear)
 			$.ajax({
-					//url: 'data/year'+theYear+'.json',
-					url: "http://localhost:8080/BackEnd/rest/year/1.json",
+					url: "http://localhost:8080/BackEnd/rest/year/"+theYear+".json",
 					dataType: 'json',
 					data: {},
 					success: function(data) {
@@ -153,7 +152,7 @@ $(function() {
 			var self = this;
 			console.log("Get the budgetEntry "+ expense_id +" with rest...");
 			$.ajax({
-					url: 'data/expense'+expense_id+'.json',
+					url: 'http://localhost:8080/BackEnd/rest/expense/'+expense_id+'.json',
 					dataType: 'json',
 					data: {},
 					success: function(data) {
@@ -169,7 +168,7 @@ $(function() {
 			var self = this;
 			console.log("Get the activity "+ activity_id +" with rest...");
 			$.ajax({
-					url: 'data/activity'+activity_id+'.json',
+					url: 'http://localhost:8080/BackEnd/rest/activity/'+activity_id+'.json',
 					dataType: 'json',
 					data: {},
 					success: function(data) {
@@ -184,14 +183,13 @@ $(function() {
 		},
 
 		listActivities: function( expense ){
-			console.log("listActivities function")
-			console.log(this._year.get('activityCollection'));
+			console.log("acticities: "+this._year.get('activityCollection'));
 			var view = new ActivityListView({
 				model: this._year.get('activityCollection')
 			});
 			console.log(view);
 			view.render();
-			if(this._activity != null){
+			if(this._activity){
 				console.log("list expenses...");
 				var view2 = new ExpenseListView({
 					model: this._activity,

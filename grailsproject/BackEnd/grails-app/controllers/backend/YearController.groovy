@@ -31,13 +31,13 @@ class YearController {
         redirect(action: "show", id: yearInstance.id)
     }
 
-    def show(Long id) {
-        def yearInstance = Year.get(id)
+    def show() {
+        def yearInstance = Year.findByYearfield(params.id as int).first()
 
         withFormat {
             html {
                 if (!yearInstance) {
-                    flash.message = message(code: 'default.not.found.message', args: [message(code: 'year.label', default: 'Year'), id])
+                    flash.message = message(code: 'default.not.found.message', args: [message(code: 'year.label', default: 'Year'), theYear])
                     redirect(action: "list")
                     return
                 }
