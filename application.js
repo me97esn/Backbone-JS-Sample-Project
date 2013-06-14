@@ -8,6 +8,8 @@ $(function() {
 	Tour = Backbone.Model.extend({});
 	Year = Backbone.Model.extend({});
 	Activity = Backbone.Model.extend({});
+	Expense = Backbone.Model.extend({});
+
 
 	/**
 	 * Collection
@@ -59,6 +61,13 @@ $(function() {
 		},
 	});
 
+	var BudgetEntryListView = Backbone.View.extend({
+		template: $("#budgetEntryListTmpl").template(),
+		render: function() {
+			console.log("TODO build the render!");
+		},
+	});
+
 	//controller
 	var Application = Backbone.Router.extend({
 		_tourListView: null,
@@ -73,8 +82,9 @@ $(function() {
 			"": "tourList",
 			"tourDetail/:id": "tourDetail",
 			"year/:year": "year",
+			"expense/:expense_id": "expense",
 			"activity/:activity_id": "activity",
-			"y/:theYear(/activity/:activity_id)":"yearActivity",
+			"y/:theYear(/activity/:activity_id)(/expense/:expense_id)":"yearActivity",
 		},
 
 		/*
@@ -93,11 +103,14 @@ $(function() {
 			
 		},
 
-		yearActivity: function(theYear, activity_id){
+		yearActivity: function(theYear, activity_id, expense_id){
 			console.log("theYear:" + theYear + ", activity_id: " + activity_id);
 			this.year(theYear);
 			if(activity_id){
 				this.activity(activity_id);
+			}
+			if(expense_id){
+				this.expense(expense_id);
 			}
 		},
 
@@ -120,6 +133,23 @@ $(function() {
 			self.redrawYearHeader();
 		},
 
+		expense: function(expense_id){
+			var self = this;
+			console.log("Get the budgetEntry "+ expense_id +" with rest...");
+			$.ajax({
+					url: 'data/expense'+expense_id+'.json',
+					dataType: 'json',
+					data: {},
+					success: function(data) {
+						console.log("Got activity from file: " + data);
+						// TODO detta ska inte sparas i enb variable, eller så måste den tömmas vid tex year()
+						self.listExpenses( new Expense(data) );
+
+					}
+				});
+			self.redrawYearHeader();
+		},
+		
 		activity: function(activity_id){
 			var self = this;
 			console.log("Get the activity "+ activity_id +" with rest...");
@@ -130,7 +160,7 @@ $(function() {
 					success: function(data) {
 						console.log("Got activity from file: " + data);
 						// TODO detta ska inte sparas i enb variable, eller så måste den tömmas vid tex year()
-						self._activity = new Activity(data);
+						
 						self.listActivities( new Activity(data) );
 
 					}
@@ -138,7 +168,7 @@ $(function() {
 			self.redrawYearHeader();
 		},
 
-		listActivities: function(){
+		listActivities: function( activity ){
 			console.log("listActivities function")
 			console.log(this._year.get('activityCollection'));
 			var view = new ActivityListView({
@@ -146,11 +176,11 @@ $(function() {
 			});
 			console.log(view);
 			view.render();
-			if(this._activity != null){
+			if(activity != null){
 				console.log("list expenses...");
 				var view2 = new ExpenseListView({
-					model: this._activity,
-					el: "#expenseInActivity" + this._activity.get('id')
+					model: activity,
+					el: "#expenseInActivity" + activity.get('id')
 				});
 
 				view2.render();
