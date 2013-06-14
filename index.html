@@ -39,7 +39,7 @@
         <div class="activity">
               <a href="#y/${$('#currentYear').html()}/activity/${id}">
                 <div class="activity-name">${name}</div> 
-                <div class="activity-price">${amount}</div>
+                <div class="activity-amount">${amount}</div>
               </a>
               <div class="expense" id="expenseInActivity${id}"> </div>
               
@@ -54,7 +54,7 @@
               
               <a href="#expense/${id}">
                 <div class="expense-name">${name}</div> 
-                <div class="expense-price">${amount}</div>
+                <div class="expense-amount">${amount}</div>
               </a>
               <div class="budgetEntry" id="budgetEntryInExpense${id}"> </div>
       </script>
@@ -66,8 +66,8 @@
         <script id="budgetEntryListTmpl" type="text/x-jquery-tmpl">
               
               <a href="#budgetEntry/${id}">
-                <div class="budgetEntry-desc">${description}</div> 
-                <div class="budgetEntry-amount">${amount}</div>
+                <div class="budgetEntry-desc"><input type="text" value="${description}" id="#budgetEntry${id}/desc" /></div> 
+                <div class="budgetEntry-amount"><input type="text" value="${amount}" id="#budgetEntry${id}/amount" /></div>
               </a>
               
       </script>

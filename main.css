@@ -13,15 +13,27 @@ margin-left: 30px;
 margin-top: 20px;
 
 }
-
-.activity{
-
-float:top;
+.budgetEntry{
 margin-left: 30px;
 margin-top: 40px;
+}
+.activity{
+    margin-left: 30px;
+    margin-top: 40px;
 
 }
 
+.expense-name, .expense-amount{float: left;
+display: inline-block;
+}
+
+.activity-name, .activity-amount{float: left;
+display: inline-block;
+}
+
+.budgetEntry-amount, .budgetEntry-desc{float: left;
+display: inline-block;
+}
 .expenseList {
 float:left;
 margin-left: 30px;

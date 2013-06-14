@@ -130,6 +130,7 @@ $(function() {
 			self._currentYear = parseInt(theYear)
 			$.ajax({
 					url: 'data/year'+theYear+'.json',
+					// url: "http://172.29.194.195:8080/DemoProject/webresources/demo2.entity.description/",
 					dataType: 'json',
 					data: {},
 					success: function(data) {
@@ -138,6 +139,11 @@ $(function() {
 						self._year = new Year(data);
 						self.listActivities();
 
+					},
+					 error: function(jqXHR, textStatus, errorThrown) {
+					    console.log(jqXHR.status);
+					    console.log(textStatus);
+					    console.log(errorThrown);
 					}
 				});
 			self.redrawYearHeader();
