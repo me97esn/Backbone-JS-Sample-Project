@@ -68,11 +68,11 @@ $(function() {
 			var self = this;
 			
 			console.log("el: " + self.el);			
-			console.log("Rendering the BudgetEntryListView with data: " + self.model);
+			console.log("Rendering the BudgetEntryListView with data: " + self.model.get('budgetEntryCollection'));
 			$('#budgetEntryList').empty();
 			$.tmpl(
 				self.template, 
-				self.model.get('budgetentryCollection') )
+				self.model.get('budgetEntryCollection') )
 			.appendTo(self.el);
 			return this;
 		},
@@ -150,16 +150,22 @@ $(function() {
 
 		expense: function(expense_id){
 			var self = this;
-			console.log("Get the budgetEntry "+ expense_id +" with rest...");
+
+			console.log("+++ Get the budgetEntry "+ expense_id +" with rest...");
+			
 			$.ajax({
 					url: 'http://localhost:8080/BackEnd/rest/expense/'+expense_id+'.json',
 					dataType: 'json',
 					data: {},
 					success: function(data) {
-						console.log("Got activity from file: " + data);
-						// TODO detta ska inte sparas i enb variable, eller så måste den tömmas vid tex year()
+						console.log("Got expense from file: " + data);
 						self.listActivities( new Expense(data) );
 
+					},
+					error: function(jqXHR, textStatus, errorThrown) {
+					    console.log(jqXHR.status);
+					    console.log(textStatus);
+					    console.log(errorThrown);
 					}
 				});
 		},
@@ -187,7 +193,6 @@ $(function() {
 			var view = new ActivityListView({
 				model: this._year.get('activityCollection')
 			});
-			console.log(view);
 			view.render();
 			if(this._activity){
 				console.log("list expenses...");

@@ -157,7 +157,7 @@ $(function() {
 					dataType: 'json',
 					data: {},
 					success: function(data) {
-						console.log("Got activity from file: " + data);
+						console.log("Got expense from file: " + data);
 						// TODO detta ska inte sparas i enb variable, eller så måste den tömmas vid tex year()
 						self.listActivities( new Expense(data) );
 
