@@ -18,8 +18,12 @@ class Year {
     static hasMany = [activityCollection: Activity]
     int yearfield
 //    boolean isFirst, isLast
-    float amount
+    Float amount
     static constraints = {
         activityCollection cascade: 'all-delete-orphan'
+    }
+
+    public Float getAmount(){
+        return activityCollection?.sum {it.amount}
     }
 }
