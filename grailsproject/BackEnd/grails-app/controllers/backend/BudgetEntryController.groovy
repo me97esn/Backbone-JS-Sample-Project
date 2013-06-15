@@ -1,10 +1,11 @@
 package backend
 
+import grails.converters.JSON
 import org.springframework.dao.DataIntegrityViolationException
 
 class BudgetEntryController {
 
-    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+//    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     def index() {
         redirect(action: "list", params: params)
@@ -32,11 +33,21 @@ class BudgetEntryController {
 
     def show(Long id) {
         def budgetEntryInstance = BudgetEntry.get(id)
-        if (!budgetEntryInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'budgetEntry.label', default: 'BudgetEntry'), id])
-            redirect(action: "list")
-            return
+        withFormat {
+            html {
+                if (!budgetEntryInstance) {
+                    flash.message = message(code: 'default.not.found.message', args: [message(code: 'budgetEntry.label', default: 'BudgetEntry'), id])
+                    redirect(action: "list")
+                    return
+                }
+            }
+            json {
+                response.setHeader("Access-Control-Allow-Origin", "*")
+                render budgetEntryInstance as JSON
+            }
+
         }
+
 
         [budgetEntryInstance: budgetEntryInstance]
     }
@@ -70,7 +81,7 @@ class BudgetEntryController {
             }
         }
 
-        budgetEntryInstance.properties = params
+        budgetEntryInstance.properties = request.JSON
 
         if (!budgetEntryInstance.save(flush: true)) {
             render(view: "edit", model: [budgetEntryInstance: budgetEntryInstance])

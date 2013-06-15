@@ -25,10 +25,16 @@ $(function() {
 
 	YearCollection = Backbone.Collection.extend({
 		model: Year,
+		comparator: function(item) {
+			return item.get('yearfield');
+		}
 	});
 
 	ActivityCollection = Backbone.Collection.extend({
 		model: Activity,
+		comparator: function(item) {
+			return item.get('name');
+		}
 	});
 
 	var ActivityListView = Backbone.View.extend({
@@ -50,7 +56,7 @@ $(function() {
 		render: function() {
 			var self = this;
 			console.log("calling the render of ExpenseListView with data: " + self.model);
-
+			// Hide all others
 			$.tmpl(
 				self.expenseListTemplate, 
 				self.model.get('expenseCollection') )
@@ -64,6 +70,8 @@ $(function() {
 	var BudgetEntryListView = Backbone.View.extend({
 		// el: '#budgetEntryList',
 		template: $("#budgetEntryListTmpl").template(),
+		events: { "change input": "amountChanged" }, 
+		
 		render: function() {
 			var self = this;
 			
@@ -75,6 +83,27 @@ $(function() {
 				self.model.get('budgetEntryCollection') )
 			.appendTo(self.el);
 			return this;
+		},
+		amountChanged: function(evt){
+			$.ajax({
+					url: "http://localhost:8080/BackEnd/rest/year/"+theYear+".json",
+					dataType: 'json',
+					data: {},
+					success: function(data) {
+						console.log("Got years from file: " + data);
+						//create Tour collect and Set Data
+						self._year = new Year(data);
+						self.listActivities();
+
+					},
+					 error: function(jqXHR, textStatus, errorThrown) {
+					    console.log(jqXHR.status);
+					    console.log(textStatus);
+					    console.log(errorThrown);
+					}
+				});
+			// TODO re-read the data and reload the views
+			// listActivities();
 		},
 	});
 

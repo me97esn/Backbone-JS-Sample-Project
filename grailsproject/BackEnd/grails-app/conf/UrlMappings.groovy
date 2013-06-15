@@ -5,6 +5,7 @@ class UrlMappings {
         "/rest/activity/$id?"(resource:"activity")
         "/rest/expense/$id?"(resource:"expense")
         "/rest/expense/$id?"(resource:"expense")
+        "/rest/budgetEntry/$id?"(resource:"budgetEntry")
 
         "/$controller/$action?/$id?"{
             constraints {
