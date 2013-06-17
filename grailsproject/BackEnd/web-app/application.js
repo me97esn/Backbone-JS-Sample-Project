@@ -52,8 +52,8 @@ $(function() {
 				self.expenseListTemplate, 
 				self.model.get('expenseCollection') )
 			.appendTo(self.el)
-			.hide()
-			.fadeIn();
+			.show( 'blind', null, 500 );
+			
 			return this;
 		},
 	});
