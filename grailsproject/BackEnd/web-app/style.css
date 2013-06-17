@@ -1,6 +1,50 @@
+a:link {
+    color: #0094DE;
+    text-decoration: none;
+
+
+}
+.activity{
+    padding:5px;
+    height: 26px;
+    background: url('images/container_top.png');
+}
+.content {
+	font-family: arial;
+}
 .expenseStyle {
+    padding: 0px;
     background-color: #DBE2EA;
     border-style: solid;
-    border-width: 2px;
+    border-width: 0px;
     border-color:  #B9C4D2;
+    
+
+}
+.activity-amount{
+    float: end;
+    font-stretch: expanded;
+    font-size: 14px;
+
+}
+.expenseList {
+    background-color: yellow;
+}
+.prevYear {
+    color: #333333;
+    float:left;
+}
+.currentYear {
+    color: #818076;
+    font-family:"Arial", sans-serif;
+}
+.nextYear {
+    color: #333333;
+}
+.yearHeader {
+
+    border-color:#818076; 
+    border-style:solid; 
+    border-width:2px; 
+    background-color:#eae9d7
 }
