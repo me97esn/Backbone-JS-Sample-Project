@@ -157,6 +157,7 @@ $(function() {
 			var self = this;
 			// TODO read the _years collection and display the current year.
 			self._currentYear = parseInt(theYear)
+			self._activity = null;
 			$.ajax({
 					url: "http://localhost:8080/BackEnd/rest/year/"+theYear+".json",
 					dataType: 'json',
