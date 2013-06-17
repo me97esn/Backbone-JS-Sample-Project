@@ -41,7 +41,7 @@ $(function() {
 		el: $('#activityList'),
 		activityListTemplate: $("#activityListTmpl").template(),
 		render: function() {
-			console.log("calling the render!");
+			console.log("+ Rendering the ActivityListView");
 			var self = this;
 			$('#activityList').empty();
 			$.tmpl(self.activityListTemplate, self.model).appendTo(self.el);
@@ -55,7 +55,7 @@ $(function() {
 		expenseListTemplate: $("#expenseListTmpl").template(),
 		render: function() {
 			var self = this;
-			console.log("calling the render of ExpenseListView with data: " + self.model);
+			console.log("++ Rendering the ExpenseListView with data: " + self.model);
 			// Hide all others
 			$.tmpl(
 				self.expenseListTemplate, 
@@ -76,7 +76,7 @@ $(function() {
 			var self = this;
 			
 			console.log("el: " + self.el);			
-			console.log("Rendering the BudgetEntryListView with data: " + self.model.get('budgetEntryCollection'));
+			console.log("+++ Rendering the BudgetEntryListView with data: " + self.model.get('budgetEntryCollection'));
 			$('#budgetEntryList').empty();
 			$.tmpl(
 				self.template, 
@@ -180,7 +180,7 @@ $(function() {
 		expense: function(expense_id){
 			var self = this;
 
-			console.log("+++ Get the budgetEntry "+ expense_id +" with rest...");
+			console.log("Get the budgetEntry "+ expense_id +" with rest...");
 			
 			$.ajax({
 					url: 'http://localhost:8080/BackEnd/rest/expense/'+expense_id+'.json',
@@ -188,7 +188,8 @@ $(function() {
 					data: {},
 					success: function(data) {
 						console.log("Got expense from file: " + data);
-						self.listActivities( new Expense(data) );
+						self._expense = new Expense(data)
+						self.listActivities();
 
 					},
 					error: function(jqXHR, textStatus, errorThrown) {
@@ -233,15 +234,26 @@ $(function() {
 				view2.render();
 			}
 			console.log("expense: " + expense);
-			if(expense != null){
+			if(this._expense != null){
 
 				var view3 = new BudgetEntryListView({
-					el: "#budgetEntryInExpense" + expense.get('id'),
-					model: expense
+					el: "#budgetEntryInExpense" + this._expense.get('id'),
+					model: this._expense
 				});
 
 				view3.render();
 			}
+		},
+
+		listExpenses: function( expense ){
+			console.log("listExpenses, expense: " + expense);
+
+			var view3 = new BudgetEntryListView({
+				el: "#budgetEntryInExpense" + expense.get('id'),
+				model: expense
+			});
+
+			view3.render();
 		},
 	});
 
