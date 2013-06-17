@@ -1,32 +1,61 @@
 body {
     background-color:#ffffff;
 }
-.expense{
-    float:left;
-    margin-left: 50px;
-    margin-top: 0px;
+
+.budgetEntry-desc{
+    margin-right: 5px;
 }
+.budgetEntry-amount{
+    float: end;
+    margin-right: 5px;
+    line-break: normal;
+}
+
+.budgetEntry-title{
+    line-break: normal;
+}
+
+.budgetEntry-desc, .budgetEntry-amount {
+    display: inline-block;
+    line-break: normal;
+}
+
 .activityListView{
 
     float:left;
     margin-left: 30px;
     margin-top: 20px;
-}
-.budgetEntry{
-    margin-left: 30px;
-    margin-top: 20px;
+    background-color: #eae9d7;
+    border: activeborder;
+    border-bottom-color: yellow;
+
+
 }
 .activity{
     margin-left: 30px;
     margin-top: 20px;
+    background-color: #333333;
+    color: aliceblue;
+    border: activeborder;
+    border-bottom-color: yellow;
+
 }
 
 .activity-name{
-    margin-right: 80px
+    margin-right: 80px;
+    color: aliceblue;
+    font-family:"Georgia", sans-serif;
+    font-stretch: expanded;
+    font-size: 14px;
 }
 
 .activity-amount{
     float: end;
+    color: aliceblue;
+    font-family:"Georgia", sans-serif;
+    font-stretch: expanded;
+    font-size: 14px;
+
 }
 
 
@@ -34,6 +63,13 @@ body {
 .activity-name, .activity-amount{
     display: inline-block;
     line-break: normal;
+}
+
+.expense
+{
+    margin-left: 30px;
+    margin-top: 0px;
+    background-color: lightblue;
 }
 
 .expense-name
@@ -52,22 +88,29 @@ body {
     margin-top: 10px;
 }
 
-.budgetEntry-desc{
-    margin-right: 20px
-}
-
-.budgetEntry-amount, .budgetEntry-desc{
-    display: inline-block;
-    line-break: normal;
-}
 .expenseList {
     float:left;
-    margin-left: 30px;
+    margin-left: 0px;
     margin-top: 20px;
+    background-color: yellow;
 }
 
-.prevYear {
+.expenseList {
+    background-color: yellow;
+}
 
+
+.budgetEntry{
+    margin-left: 30px;
+    margin-top: 20px;
+    background-color: #eae9d7;
+    line-break: normal;
+}
+
+
+
+
+.prevYear {
     color: #333333;
     float:left;
     margin-left: 10px;
@@ -96,56 +139,4 @@ body {
     border-width:2px; 
     float:left; 
     background-color:#eae9d7
-}
-#addTour, .sortBy {
-    color:white;
-}
-
-#tourList {
-    clear:both;
-    float:left;
-    padding: 0px;
-}
-
-#tourListView li {
-    margin-bottom: 10px;
-    margin-left: 30px;
-    padding: 20px;
-    display:inline;
-    float:left;
-    width: 250px;
-    height: 300px;
-    text-align:center;
-    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.7);
-    border: 1px solid #ffffff;
-    border-radius: 2px;
-    position:relative;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-}
-
-#tourListView li:hover {
-    background-color:white;
-    background-image:none;
-}
-
-#tourListView li a {
-    display:block;
-}
-
-#tourDetailView {
-    clear:both;
-    margin-bottom: 30px;
-    margin-left: 30px;
-    padding: 20px;
-    display:block;
-    float:left;
-    width: 895px;
-    height: 300px;
-    text-align:center;
-    background-color:white;
-    background-image:none;
-    border: 1px solid #ffffff;
-    border-radius: 2px;
-    position:relative;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 }

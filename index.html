@@ -61,12 +61,18 @@
         </div>
 
         <div id="budgetEntryListView" class="budgetEntryListView">
+
             <div id="budgetEntryList" class="budgetEntryList">
+                <!--                <div class="budgetEntry-title">Titel 1</div> 
+                                <div class="budgetEntry-title">Titel 2</div> -->
+                <div class="budgetEntry-desc">Beskrivning</div>
+                <div class="budgetEntry-amount">Belopp</div>
                 <script id="budgetEntryListTmpl" type="text/x-jquery-tmpl">
+                    <div class="budgetEntry-title">
 
                     <div class="budgetEntry-desc"><input type="text" value="${description}" id="#budgetEntry${id}/desc" /></div> 
                     <div class="budgetEntry-amount"><input type="text" value="${amount}" id="#budgetEntry${id}/amount" /></div>
-
+                    </div>
                 </script>
             </div>
         </div>

@@ -1,5 +1,5 @@
 {
-	"id": 1,
+    "id": 1,
     "name": "Lön",
     "amount": 3000,
     "budgetentryCollection": [
@@ -7,6 +7,17 @@
             "id": 1,
             "amount": 1000,
             "description": "Budgetpost 1"
+        },
+        {
+            "id": 11,
+            "amount": 11000,
+            "description": "Budgetpost 11"
+        },
+        {
+            "id": 22,
+            "amount": 22000,
+            "description": "Budgetpost 22"
         }
+
     ]
 }
