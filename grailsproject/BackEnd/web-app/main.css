@@ -19,7 +19,10 @@ body {
     display: inline-block;
     line-break: normal;
 }
-
+.expenseRow{
+padding: 5px;
+border: 2px solid white;
+}
 .activityListView{
 
     float:left;
@@ -86,7 +89,6 @@ body {
     margin-top: 20px;
     line-break: normal;
 }
-
 
 
 

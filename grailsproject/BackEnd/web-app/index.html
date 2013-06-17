@@ -33,19 +33,23 @@
 
             <div class="nextYear"><a id="nextYear" href="#y/2013">></a>
             </div>
-            <div id="currentYear" class="currentYear"><!--The year should be displayed by a javascript function here--></div>
+            <a href="#" >
+                <div id="currentYear" class="currentYear"><!--The year should be displayed by a javascript function here--></div>
+            </a>
         </div>
 
         <div class="activityListView content" id="activityListView">
             <div id="activityList" class="activityList content">    
                 <script id="activityListTmpl" type="text/x-jquery-tmpl">
-                    <div class="activity">
-                    <a href="#y/${$('#currentYear').html()}/activity/${id}">
-                    <div class="activity-name">${name}</div> 
-                    <div class="activity-amount">${amount}</div>
-                    </a>
-                    </div>
-                    <div class="expense expenseStyle" id="expenseInActivity${id}"> </div>
+                    
+                        <div class="activity">
+                        <a href="#y/${$('#currentYear').html()}/activity/${id}">
+                        <div class="activity-name">${name}</div> 
+                        <div class="activity-amount">${amount}</div>
+                        </a>
+                        </div>
+                        <div class="expense expenseStyle" id="expenseInActivity${id}"> </div>
+
                 </script>
             </div>
         </div>
@@ -53,12 +57,13 @@
         <div id="expenseListView content" class="expenseListView">
             <div id="expenseList" class="expenseList">
                 <script id="expenseListTmpl" type="text/x-jquery-tmpl">
-
-                    <a href="#expense/${id}">
-                    <div class="expense-name">${name}</div> 
-                    <div class="expense-amount">${amount}</div>
-                    </a>
-                    <div class="budgetEntry" id="budgetEntryInExpense${id}"> </div>
+                    <div class="expenseRow">
+                        <a href="#expense/${id}">
+                        <div class="expense-name">${name}</div> 
+                        <div class="expense-amount">${amount}</div>
+                        </a>
+                        <div class="budgetEntry" id="budgetEntryInExpense${id}"> </div>
+                    </div>
                 </script>
             </div>
         </div>

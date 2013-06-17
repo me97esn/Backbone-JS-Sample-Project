@@ -138,6 +138,8 @@ $(function() {
 			this.year(theYear);
 			if(activity_id){
 				this.activity(activity_id);
+			}else{
+				this._activity = null;
 			}
 			if(expense_id){
 				this.expense(expense_id);
