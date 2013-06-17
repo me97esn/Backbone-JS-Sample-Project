@@ -139,6 +139,7 @@ $(function() {
 		yearActivity: function(theYear, activity_id, expense_id){
 			console.log("theYear:" + theYear + ", activity_id: " + activity_id);
 			this.year(theYear);
+			$('.expense').hide('blind', 500);
 			if(activity_id){
 				this.activity(activity_id);
 			}else{
@@ -191,7 +192,7 @@ $(function() {
 					success: function(data) {
 						console.log("Got expense from file: " + data);
 						self._expense = new Expense(data)
-						self.listActivities();
+						self.listExpenses();
 
 					},
 					error: function(jqXHR, textStatus, errorThrown) {
@@ -251,12 +252,10 @@ $(function() {
 			}
 		},
 
-		listExpenses: function( expense ){
-			console.log("listExpenses, expense: " + expense);
-
+		listExpenses: function( ){
 			var view3 = new BudgetEntryListView({
-				el: "#budgetEntryInExpense" + expense.get('id'),
-				model: expense
+				el: "#budgetEntryInExpense" + this._expense.get('id'),
+				model: this._expense
 			});
 
 			view3.render();
