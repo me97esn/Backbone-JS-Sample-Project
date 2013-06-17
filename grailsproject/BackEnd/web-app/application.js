@@ -35,8 +35,10 @@ $(function() {
 			var self = this;
 
 			$('#activityList').empty();
-			$.tmpl(self.activityListTemplate, self.model.toJSON()).appendTo(self.el);
-
+			$.tmpl(self.activityListTemplate, self.model.toJSON())
+			// .hide()
+			.appendTo(self.el);
+			// .show( 'blind', 500 );
 			return this;
 		},
 	});
@@ -51,8 +53,9 @@ $(function() {
 			$.tmpl(
 				self.expenseListTemplate, 
 				self.model.get('expenseCollection') )
+			.hide()
 			.appendTo(self.el)
-			.show( 'blind', null, 500 );
+			.show( 'blind', 500 );
 			
 			return this;
 		},
