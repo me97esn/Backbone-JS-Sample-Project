@@ -159,7 +159,9 @@ $(function() {
 			self._currentYear = parseInt(theYear)
 			self._activity = null;
 			$.ajax({
-					url: "http://localhost:8080/BackEnd/rest/year/"+theYear+".json",
+					url: 'data/year'+theYear+'.json',
+					// url: "http://localhost:8080/BackEnd/rest/year/"+theYear+".json",
+
 					// url: "http://172.29.194.195:8080/DemoProject/webresources/demo2.entity.yearobj/1",
 
 					dataType: 'json',
@@ -186,7 +188,8 @@ $(function() {
 			console.log("Get the budgetEntry "+ expense_id +" with rest...");
 			
 			$.ajax({
-					url: 'http://localhost:8080/BackEnd/rest/expense/'+expense_id+'.json',
+					// url: 'http://localhost:8080/BackEnd/rest/expense/'+expense_id+'.json',
+					url: 'data/expense'+expense_id+'.json',
 					dataType: 'json',
 					data: {},
 					success: function(data) {
@@ -207,7 +210,9 @@ $(function() {
 			var self = this;
 			console.log("Get the activity "+ activity_id +" with rest...");
 			$.ajax({
-					url: 'http://localhost:8080/BackEnd/rest/activity/'+activity_id+'.json',
+					//url: 'http://localhost:8080/BackEnd/rest/activity/'+activity_id+'.json',
+					url: 'data/activity'+activity_id+'.json',
+
 					dataType: 'json',
 					data: {},
 					success: function(data) {
