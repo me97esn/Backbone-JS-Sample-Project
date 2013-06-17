@@ -1,1 +1,4 @@
 This is a sample project that demonstrates the very basics of backbone.js.  Used for my Aloha.rb presentation on Introduction to backbone.js.
+Index.html is now calling a grails rest web service.
+To run: grails run-app
+Url to the page: http://localhost:8080/BackEnd/index.html

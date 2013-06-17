@@ -25,17 +25,23 @@ $(function() {
 
 	YearCollection = Backbone.Collection.extend({
 		model: Year,
+		comparator: function(item) {
+			return item.get('yearfield');
+		}
 	});
 
 	ActivityCollection = Backbone.Collection.extend({
 		model: Activity,
+		comparator: function(item) {
+			return item.get('name');
+		}
 	});
 
 	var ActivityListView = Backbone.View.extend({
 		el: $('#activityList'),
 		activityListTemplate: $("#activityListTmpl").template(),
 		render: function() {
-			console.log("calling the render!");
+			console.log("+ Rendering the ActivityListView");
 			var self = this;
 			$('#activityList').empty();
 			$.tmpl(self.activityListTemplate, self.model).appendTo(self.el);
@@ -49,8 +55,8 @@ $(function() {
 		expenseListTemplate: $("#expenseListTmpl").template(),
 		render: function() {
 			var self = this;
-			console.log("calling the render of ExpenseListView with data: " + self.model);
-
+			console.log("++ Rendering the ExpenseListView with data: " + self.model);
+			// Hide all others
 			$.tmpl(
 				self.expenseListTemplate, 
 				self.model.get('expenseCollection') )
@@ -64,17 +70,40 @@ $(function() {
 	var BudgetEntryListView = Backbone.View.extend({
 		// el: '#budgetEntryList',
 		template: $("#budgetEntryListTmpl").template(),
+		events: { "change input": "amountChanged" }, 
+		
 		render: function() {
 			var self = this;
 			
 			console.log("el: " + self.el);			
-			console.log("Rendering the BudgetEntryListView with data: " + self.model);
+			console.log("+++ Rendering the BudgetEntryListView with data: " + self.model.get('budgetEntryCollection'));
 			$('#budgetEntryList').empty();
 			$.tmpl(
 				self.template, 
-				self.model.get('budgetentryCollection') )
+				self.model.get('budgetEntryCollection') )
 			.appendTo(self.el);
 			return this;
+		},
+		amountChanged: function(evt){
+			$.ajax({
+					url: "http://localhost:8080/BackEnd/rest/year/"+theYear+".json",
+					dataType: 'json',
+					data: {},
+					success: function(data) {
+						console.log("Got years from file: " + data);
+						//create Tour collect and Set Data
+						self._year = new Year(data);
+						self.listActivities();
+
+					},
+					 error: function(jqXHR, textStatus, errorThrown) {
+					    console.log(jqXHR.status);
+					    console.log(textStatus);
+					    console.log(errorThrown);
+					}
+				});
+			// TODO re-read the data and reload the views
+			// listActivities();
 		},
 	});
 
@@ -129,8 +158,7 @@ $(function() {
 			// TODO read the _years collection and display the current year.
 			self._currentYear = parseInt(theYear)
 			$.ajax({
-					url: 'data/year'+theYear+'.json',
-					// url: "http://localhost:8080/BackEnd/rest/year/1.json",
+					url: "http://localhost:8080/BackEnd/rest/year/"+theYear+".json",
 					dataType: 'json',
 					data: {},
 					success: function(data) {
@@ -151,16 +179,23 @@ $(function() {
 
 		expense: function(expense_id){
 			var self = this;
+
 			console.log("Get the budgetEntry "+ expense_id +" with rest...");
+			
 			$.ajax({
-					url: 'data/expense'+expense_id+'.json',
+					url: 'http://localhost:8080/BackEnd/rest/expense/'+expense_id+'.json',
 					dataType: 'json',
 					data: {},
 					success: function(data) {
 						console.log("Got expense from file: " + data);
-						// TODO detta ska inte sparas i enb variable, eller så måste den tömmas vid tex year()
-						self.listActivities( new Expense(data) );
+						self._expense = new Expense(data)
+						self.listActivities();
 
+					},
+					error: function(jqXHR, textStatus, errorThrown) {
+					    console.log(jqXHR.status);
+					    console.log(textStatus);
+					    console.log(errorThrown);
 					}
 				});
 		},
@@ -169,7 +204,7 @@ $(function() {
 			var self = this;
 			console.log("Get the activity "+ activity_id +" with rest...");
 			$.ajax({
-					url: 'data/activity'+activity_id+'.json',
+					url: 'http://localhost:8080/BackEnd/rest/activity/'+activity_id+'.json',
 					dataType: 'json',
 					data: {},
 					success: function(data) {
@@ -184,14 +219,12 @@ $(function() {
 		},
 
 		listActivities: function( expense ){
-			console.log("listActivities function")
-			console.log(this._year.get('activityCollection'));
+			console.log("acticities: "+this._year.get('activityCollection'));
 			var view = new ActivityListView({
 				model: this._year.get('activityCollection')
 			});
-			console.log(view);
 			view.render();
-			if(this._activity != null){
+			if(this._activity){
 				console.log("list expenses...");
 				var view2 = new ExpenseListView({
 					model: this._activity,
@@ -201,33 +234,27 @@ $(function() {
 				view2.render();
 			}
 			console.log("expense: " + expense);
-			if(expense != null){
+			if(this._expense != null){
 
 				var view3 = new BudgetEntryListView({
-					el: "#budgetEntryInExpense" + expense.get('id'),
-					model: expense
+					el: "#budgetEntryInExpense" + this._expense.get('id'),
+					model: this._expense
 				});
 
 				view3.render();
 			}
 		},
 
+		listExpenses: function( expense ){
+			console.log("listExpenses, expense: " + expense);
 
-
-		
-		tourList: function() {
-			this._tourListView = new TourListView({
-				model: this._tours
+			var view3 = new BudgetEntryListView({
+				el: "#budgetEntryInExpense" + expense.get('id'),
+				model: expense
 			});
-			this._tourListView.render();
+
+			view3.render();
 		},
-
-		tourDetail: function(id) {
-			this._tourDetailView = new TourDetailView({
-				model: this._tours.at(id)
-			});
-			this._tourDetailView.render();
-		}
 	});
 
 	//instantiate Application object
