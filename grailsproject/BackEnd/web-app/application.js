@@ -160,6 +160,8 @@ $(function() {
 			self._activity = null;
 			$.ajax({
 					url: "http://localhost:8080/BackEnd/rest/year/"+theYear+".json",
+					// url: "http://172.29.194.195:8080/DemoProject/webresources/demo2.entity.yearobj/1",
+
 					dataType: 'json',
 					data: {},
 					success: function(data) {
