@@ -2,27 +2,16 @@ body {
     background-color:#ffffff;
 }
 
-.budgetEntry-desc{
-    margin-right: 5px;
-}
-.budgetEntry-amount{
-    float: end;
-    margin-right: 5px;
-    line-break: normal;
-}
 
-.budgetEntry-title{
-    line-break: normal;
-}
-
-.budgetEntry-desc, .budgetEntry-amount {
-    display: inline-block;
-    line-break: normal;
+.right
+{
+    text-align: right;
 }
 
 .activityListView{
 
     float:left;
+    width:45%; 
     margin-left: 30px;
     margin-top: 20px;
     background-color: #eae9d7;
@@ -34,6 +23,7 @@ body {
 .activity{
     margin-left: 30px;
     margin-top: 20px;
+    width:93%; 
     background-color: #333333;
     color: aliceblue;
     border: activeborder;
@@ -42,7 +32,8 @@ body {
 }
 
 .activity-name{
-    margin-right: 80px;
+    width:60%; 
+    /*margin-right: 80px;*/
     color: aliceblue;
     font-family:"Georgia", sans-serif;
     font-stretch: expanded;
@@ -50,6 +41,7 @@ body {
 }
 
 .activity-amount{
+    width:37%; 
     float: end;
     color: aliceblue;
     font-family:"Georgia", sans-serif;
@@ -58,8 +50,6 @@ body {
 
 }
 
-
-
 .activity-name, .activity-amount{
     display: inline-block;
     line-break: normal;
@@ -67,18 +57,20 @@ body {
 
 .expense
 {
-    margin-left: 30px;
+    width:91%; 
+    margin-left: 40px;
     margin-top: 0px;
     background-color: lightblue;
 }
 
 .expense-name
 {
-    margin-right: 80px
+    width:60%;
 }
 
 .expense-amount
 {
+    width:37%;
     float: end;
 }
 
@@ -99,7 +91,6 @@ body {
     background-color: yellow;
 }
 
-
 .budgetEntry{
     margin-left: 30px;
     margin-top: 20px;
@@ -107,7 +98,27 @@ body {
     line-break: normal;
 }
 
+.budgetEntry-desc{
+    width:60%;
+    /*    margin-right: 95px;
+        margin-left: 95px;*/
+}
+.budgetEntry-amount{
+    width:38%;
+    float: end;
+    margin-right: 5px;
+    line-break: normal;
+    text-align: right;
+}
 
+.budgetEntry-title{
+    line-break: normal;
+}
+
+.budgetEntry-desc, .budgetEntry-amount {
+    display: inline-block;
+    line-break: normal;
+}
 
 
 .prevYear {
@@ -116,6 +127,7 @@ body {
     margin-left: 10px;
     margin-top: 5px;
 }
+
 .currentYear {
     position:absolute;
     right:50%;
@@ -124,12 +136,14 @@ body {
     margin-top: 5px;
     font-family:"Arial", sans-serif;
 }
+
 .nextYear {
     color: #333333;
     float:right;
     margin-right: 10px;
     margin-top: 5px;
 }
+
 .yearHeader {
 
     position:relative;
