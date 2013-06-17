@@ -68,14 +68,16 @@ $(function() {
 		
 		render: function() {
 			var self = this;
-			
 			console.log("el: " + self.el);			
 			console.log("+++ Rendering the BudgetEntryListView with data: " + self.model.get('budgetEntryCollection'));
 			$('#budgetEntryList').empty();
+
 			$.tmpl(
 				self.template, 
 				self.model.get('budgetEntryCollection') )
-			.appendTo(self.el);
+			.hide()
+			.appendTo(self.el)
+			.show( 'blind', 500 );
 			return this;
 		},
 		amountChanged: function(evt){
