@@ -11,6 +11,8 @@
 
         <script src="application.js"></script>
         <link rel="stylesheet" href="main.css" type="text/css" media="screen" title="no title" charset="utf-8">
+        <link rel="stylesheet" href="style.css" type="text/css" media="screen" title="no title" charset="utf-8">
+
         <script type="text/javascript">
             jQuery.fn.center = function() {
                 // this.css("position","absolute");
@@ -23,41 +25,47 @@
     </head>
 
     <body>
+        <div class="esfIcon"><img src="http://www.esf.se/Global/StartPage/1/logo.gif"></div>
         <div class="yearHeader">
             <div class="prevYear">
-                <a id="prevYear" href="#y/2012">prev</a>
+                <a id="prevYear" href="#y/2012"><</a>
             </div>
 
-            <div class="nextYear"><a id="nextYear" href="#y/2013">next</a>
+            <div class="nextYear"><a id="nextYear" href="#y/2013">></a>
             </div>
-            <div id="currentYear" class="currentYear"><!--The year should be displayed by a javascript function here--></div>
+            <a href="#" >
+                <div id="currentYear" class="currentYear"><!--The year should be displayed by a javascript function here--></div>
+            </a>
         </div>
 
-        <div class="activityListView" id="activityListView">
-            <div class="activity-name">Aktivitet</div> 
-            <div class="activity-amount right">Belopp</div>
-            <div id="activityList" class="activityList">    
+        <div class="activityListView content" id="activityListView">
+            <div id="activityList" class="activityList content">    
                 <script id="activityListTmpl" type="text/x-jquery-tmpl">
-                    <div class="activity">
-                    <a href="#y/${$('#currentYear').html()}/activity/${id}">
-                    <div class="activity-name">${name}</div> 
-                    <div class="activity-amount right">${amount}</div>
-                    </a>
-                    </div>
-                    <div class="expense" id="expenseInActivity${id}"> </div>
+                    
+                        <div class="activity">
+                        <a href="#y/${$('#currentYear').html()}/activity/${id}">
+                        <div class="activity-name">${name}</div> 
+                        <div class="activity-amount right">${amount}</div>
+                        </a>
+                        </div>
+                        <div class="expense expenseStyle" id="expenseInActivity${id}"> </div>
+
                 </script>
             </div>
         </div>
 
-        <div id="expenseListView" class="expenseListView">
+        <div id="expenseListView" class="expenseListView content">
             <div id="expenseList" class="expenseList">
                 <script id="expenseListTmpl" type="text/x-jquery-tmpl">
-
+                    
+                    <div class="expenseRow">
                     <a href="#expense/${id}">
                     <div class="expense-name">${name}</div> 
                     <div class="expense-amount right">${amount}</div>
                     </a>
                     <div class="budgetEntry" id="budgetEntryInExpense${id}"> </div>
+                    </div>
+                    
                 </script>
             </div>
         </div>
@@ -68,8 +76,8 @@
                 <!--                <div class="budgetEntry-title">Titel 1</div> 
                                 <div class="budgetEntry-title">Titel 2</div> -->
                 <script id="budgetEntryListTmpl" type="text/x-jquery-tmpl">
-//                <div class="budgetEntry-desc">Beskrivning</div>
-//                <div class="budgetEntry-amount">Belopp</div>
+                    //                <div class="budgetEntry-desc">Beskrivning</div>
+                    //                <div class="budgetEntry-amount">Belopp</div>
                     <div class="budgetEntry-title">
 
                     <div class="budgetEntry-desc"><input type="text" value="${attributes.description}" id="#budgetEntry${id}/desc" /></div> 

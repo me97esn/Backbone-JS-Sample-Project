@@ -7,16 +7,16 @@ body {
 {
     text-align: right;
 }
-
+.expenseRow{
+    padding: 5px;
+    border: 2px solid white;
+}
 .activityListView{
 
     float:left;
     width:45%; 
     margin-left: 30px;
     margin-top: 20px;
-    background-color: #eae9d7;
-    border: activeborder;
-    border-bottom-color: yellow;
 
 
 }
@@ -24,30 +24,16 @@ body {
     margin-left: 30px;
     margin-top: 20px;
     width:93%; 
-    background-color: #333333;
-    color: aliceblue;
-    border: activeborder;
-    border-bottom-color: yellow;
-
 }
 
 .activity-name{
     width:60%; 
-    /*margin-right: 80px;*/
-    color: aliceblue;
-    font-family:"Georgia", sans-serif;
-    font-stretch: expanded;
-    font-size: 14px;
+    margin-right: 80px;
 }
 
 .activity-amount{
     width:37%; 
     float: end;
-    color: aliceblue;
-    font-family:"Georgia", sans-serif;
-    font-stretch: expanded;
-    font-size: 14px;
-
 }
 
 .activity-name, .activity-amount{
@@ -60,7 +46,6 @@ body {
     width:91%; 
     margin-left: 40px;
     margin-top: 0px;
-    background-color: lightblue;
 }
 
 .expense-name
@@ -87,14 +72,10 @@ body {
     background-color: yellow;
 }
 
-.expenseList {
-    background-color: yellow;
-}
 
 .budgetEntry{
     margin-left: 30px;
     margin-top: 20px;
-    background-color: #eae9d7;
     line-break: normal;
 }
 
@@ -120,9 +101,7 @@ body {
     line-break: normal;
 }
 
-
 .prevYear {
-    color: #333333;
     float:left;
     margin-left: 10px;
     margin-top: 5px;
@@ -131,26 +110,18 @@ body {
 .currentYear {
     position:absolute;
     right:50%;
-    color: #818076;
     width: 30px;
     margin-top: 5px;
-    font-family:"Arial", sans-serif;
 }
 
 .nextYear {
-    color: #333333;
     float:right;
     margin-right: 10px;
     margin-top: 5px;
 }
 
 .yearHeader {
-
     position:relative;
     height:30px; width:100%; 
-    border-color:#818076; 
-    border-style:solid; 
-    border-width:2px; 
     float:left; 
-    background-color:#eae9d7
 }

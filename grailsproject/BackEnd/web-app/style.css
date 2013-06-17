@@ -1,0 +1,60 @@
+a {
+    color: #595e64;
+    text-decoration: none;
+
+}
+a:hover {
+    color: #B9C4D2;
+    text-decoration: none;
+
+}
+
+.activity{
+    height: 26px;
+    /*background: url('images/container_top.png');*/
+    padding: 2px;
+    background-color: #DBE2EA;
+    border-style: solid;
+    border-width: 2px;
+    border-color:  #B9C4D2;
+    
+}
+.content {
+	font-family: arial;
+}
+.expenseStyle {
+    padding: 0px;
+    background-color: #e4ebf4;
+    border-style: solid;
+    border-width: 0px;
+    border-color:  #B9C4D2;
+    
+
+}
+.activity-amount{
+    float: end;
+    font-stretch: expanded;
+    font-size: 14px;
+
+}
+.expenseList {
+    background-color: yellow;
+}
+.prevYear {
+    color: #333333;
+    float:left;
+}
+.currentYear {
+    color: #818076;
+    font-family:"Arial", sans-serif;
+}
+.nextYear {
+    color: #333333;
+}
+.yearHeader {
+
+    border-color:#aab0b6; 
+    border-style:solid; 
+    border-width:2px; 
+    background-color:#DBE2EA
+}

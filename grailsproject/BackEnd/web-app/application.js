@@ -11,17 +11,6 @@ $(function() {
 	Expense = Backbone.Model.extend({});
 
 
-	/**
-	 * Collection
-	 */
-	TourCollection = Backbone.Collection.extend({
-		model: Tour,
-
-		//If you define a comparator, it will be used to maintain the collection in sorted order.
-		comparator: function(item) {
-			return item.get('pid');
-		}
-	});
 
 	YearCollection = Backbone.Collection.extend({
 		model: Year,
@@ -33,6 +22,7 @@ $(function() {
 	ActivityCollection = Backbone.Collection.extend({
 		model: Activity,
 		comparator: function(item) {
+			console.log('::: sorting the collection by name');
 			return item.get('name');
 		}
 	});
@@ -43,8 +33,9 @@ $(function() {
 		render: function() {
 			console.log("+ Rendering the ActivityListView");
 			var self = this;
+
 			$('#activityList').empty();
-			$.tmpl(self.activityListTemplate, self.model).appendTo(self.el);
+			$.tmpl(self.activityListTemplate, self.model.toJSON()).appendTo(self.el);
 
 			return this;
 		},
@@ -147,6 +138,8 @@ $(function() {
 			this.year(theYear);
 			if(activity_id){
 				this.activity(activity_id);
+			}else{
+				this._activity = null;
 			}
 			if(expense_id){
 				this.expense(expense_id);
@@ -157,8 +150,13 @@ $(function() {
 			var self = this;
 			// TODO read the _years collection and display the current year.
 			self._currentYear = parseInt(theYear)
+			self._activity = null;
 			$.ajax({
+					// url: 'data/year'+theYear+'.json',
 					url: "http://localhost:8080/BackEnd/rest/year/"+theYear+".json",
+
+					// url: "http://172.29.194.195:8080/DemoProject/webresources/demo2.entity.yearobj/1",
+
 					dataType: 'json',
 					data: {},
 					success: function(data) {
@@ -184,6 +182,7 @@ $(function() {
 			
 			$.ajax({
 					url: 'http://localhost:8080/BackEnd/rest/expense/'+expense_id+'.json',
+					// url: 'data/expense'+expense_id+'.json',
 					dataType: 'json',
 					data: {},
 					success: function(data) {
@@ -205,6 +204,8 @@ $(function() {
 			console.log("Get the activity "+ activity_id +" with rest...");
 			$.ajax({
 					url: 'http://localhost:8080/BackEnd/rest/activity/'+activity_id+'.json',
+					// url: 'data/activity'+activity_id+'.json',
+
 					dataType: 'json',
 					data: {},
 					success: function(data) {
@@ -219,9 +220,11 @@ $(function() {
 		},
 
 		listActivities: function( expense ){
-			console.log("acticities: "+this._year.get('activityCollection'));
+			console.log(" this._year.get('activityCollection'): " +  this._year.get('activityCollection'));
+			console.log(" new ActivityCollection( this._year.get('activityCollection')): " + new ActivityCollection( this._year.get('activityCollection')));
+
 			var view = new ActivityListView({
-				model: this._year.get('activityCollection')
+				model: new ActivityCollection( this._year.get('activityCollection'))
 			});
 			view.render();
 			if(this._activity){
