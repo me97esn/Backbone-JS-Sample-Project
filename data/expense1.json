@@ -2,7 +2,7 @@
     "id": 1,
     "name": "Lön",
     "amount": 3000,
-    "budgetentryCollection": [
+    "budgetEntryCollection": [
         {
             "id": 1,
             "amount": 1000,
