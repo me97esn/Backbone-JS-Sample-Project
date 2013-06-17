@@ -28,11 +28,10 @@ body {
 
 .activity-name{
     width:60%; 
-    margin-right: 80px;
 }
 
 .activity-amount{
-    width:37%; 
+    width:35%; 
     float: end;
 }
 
