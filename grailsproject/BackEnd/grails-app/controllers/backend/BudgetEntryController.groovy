@@ -5,7 +5,7 @@ import org.springframework.dao.DataIntegrityViolationException
 
 class BudgetEntryController {
 
-//    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+    static allowedMethods = [update: "POST", delete: "POST"]
 
     def index() {
         redirect(action: "list", params: params)
@@ -21,14 +21,14 @@ class BudgetEntryController {
     }
 
     def save() {
-        def budgetEntryInstance = new BudgetEntry(params)
+        def budgetEntryInstance = BudgetEntry.get(request.JSON.id as int)
+        budgetEntryInstance.amount = request.JSON.amount as Float
         if (!budgetEntryInstance.save(flush: true)) {
-            render(view: "create", model: [budgetEntryInstance: budgetEntryInstance])
+            response.setStatus(500, "Could not save entity.")
             return
         }
 
-        flash.message = message(code: 'default.created.message', args: [message(code: 'budgetEntry.label', default: 'BudgetEntry'), budgetEntryInstance.id])
-        redirect(action: "show", id: budgetEntryInstance.id)
+        render budgetEntryInstance as JSON
     }
 
     def show(Long id) {

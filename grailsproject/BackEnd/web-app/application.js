@@ -80,15 +80,23 @@ $(function() {
 			return this;
 		},
 		amountChanged: function(evt){
+			var field = $(evt.currentTarget);
+			var data = {};
+			data['amount'] = field.val();
+
+			data['id']=field.attr('budgetEntryId');
+			console.log('updating the amount of id ' + data['id']);
 			$.ajax({
-					url: "http://localhost:8080/BackEnd/rest/year/"+theYear+".json",
-					dataType: 'json',
-					data: {},
+					url: "http://localhost:8080/BackEnd/rest/budgetEntry/"+data['id']+".json",
+					type: 'POST',
+				    data: JSON.stringify(data),
+				    contentType: 'application/json; charset=utf-8',
+				    dataType: 'json',
 					success: function(data) {
-						console.log("Got years from file: " + data);
+						console.log("Updated successfully: " + data);
 						//create Tour collect and Set Data
-						self._year = new Year(data);
-						self.listActivities();
+						// self._year = new Year(data);
+						// self.listActivities();
 
 					},
 					 error: function(jqXHR, textStatus, errorThrown) {

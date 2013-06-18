@@ -22,7 +22,6 @@ $(function() {
 	ActivityCollection = Backbone.Collection.extend({
 		model: Activity,
 		comparator: function(item) {
-			console.log('::: sorting the collection by name');
 			return item.get('name');
 		}
 	});
@@ -35,8 +34,10 @@ $(function() {
 			var self = this;
 
 			$('#activityList').empty();
-			$.tmpl(self.activityListTemplate, self.model.toJSON()).appendTo(self.el);
-
+			$.tmpl(self.activityListTemplate, self.model.toJSON())
+			// .hide()
+			.appendTo(self.el);
+			// .show( 'blind', 500 );
 			return this;
 		},
 	});
@@ -51,8 +52,9 @@ $(function() {
 			$.tmpl(
 				self.expenseListTemplate, 
 				self.model.get('expenseCollection') )
+			.hide()
 			.appendTo(self.el)
-			.show( 'blind', null, 500 );
+			.show( 'blind', 500 );
 			
 			return this;
 		},
@@ -65,26 +67,37 @@ $(function() {
 		
 		render: function() {
 			var self = this;
-			
 			console.log("el: " + self.el);			
 			console.log("+++ Rendering the BudgetEntryListView with data: " + self.model.get('budgetEntryCollection'));
 			$('#budgetEntryList').empty();
+
 			$.tmpl(
 				self.template, 
 				self.model.get('budgetEntryCollection') )
-			.appendTo(self.el);
+			.hide()
+			.appendTo(self.el)
+			.show( 'blind', 500 );
 			return this;
 		},
 		amountChanged: function(evt){
+			var field = $(evt.currentTarget);
+			var data = {};
+			data['amount'] = field.val();
+			console.log('------');
+			console.log(field.parent('budgetEntryId'));
+			data['id']=field.parent('budgetEntryId').get('budgetEntryId');
+			console.log('updating the amount of id ' + data['id']);
 			$.ajax({
-					url: "http://localhost:8080/BackEnd/rest/year/"+theYear+".json",
-					dataType: 'json',
-					data: {},
+					url: "http://localhost:8080/BackEnd/rest/budgetEntry/3.json",
+					type: 'POST',
+				    data: JSON.stringify(data),
+				    contentType: 'application/json; charset=utf-8',
+				    dataType: 'json',
 					success: function(data) {
-						console.log("Got years from file: " + data);
+						console.log("Updated successfully: " + data);
 						//create Tour collect and Set Data
-						self._year = new Year(data);
-						self.listActivities();
+						// self._year = new Year(data);
+						// self.listActivities();
 
 					},
 					 error: function(jqXHR, textStatus, errorThrown) {
@@ -111,7 +124,7 @@ $(function() {
 		routes: {
 			"": "tourList",
 			"tourDetail/:id": "tourDetail",
-			"year/:year": "year",
+			"year/:year": "changeYear",
 			"expense/:expense_id": "expense",
 			"activity/:activity_id": "activity",
 			"y/:theYear(/activity/:activity_id)(/expense/:expense_id)":"yearActivity",
@@ -121,7 +134,8 @@ $(function() {
 		 * Constructor
 		 */
 		initialize: function(options) {
-			this.year(2012);
+			$('#year2013').toggle("hide");
+			this.changeYear(2012);
 
 			return this;
 		},
@@ -129,13 +143,14 @@ $(function() {
 		redrawYearHeader: function(){
 			var self = this;
 			// TODO read the _years collection and display the current year.
-			$('#currentYear').text(""+self._currentYear)
+			$('#currentYear').text(""+self._currentYear);
+
 			
 		},
 
 		yearActivity: function(theYear, activity_id, expense_id){
 			console.log("theYear:" + theYear + ", activity_id: " + activity_id);
-			this.year(theYear);
+			$('.expense').hide('blind', 500);
 			if(activity_id){
 				this.activity(activity_id);
 			}else{
@@ -146,11 +161,28 @@ $(function() {
 			}
 		},
 
+		changeYear: function(theYear){
+			self = this;
+			var direction = {2012:'left', 2013:'right'};
+			$('#content').appendTo('#year' + self._currentYear);
+			$('#year' + self._currentYear).toggle("slide", {"direction":direction[self._currentYear]}, 500, function(){
+				$('#content').appendTo('#year' + theYear);
+				$('#year'+self._currentYear).toggle("slide", {"direction":direction[self._currentYear]}, 500);
+			});
+
+
+			console.log('changing the year to ' + theYear);
+							
+			return this.year(theYear);
+		},
+
 		year: function(theYear){
 			var self = this;
-			// TODO read the _years collection and display the current year.
+			
 			self._currentYear = parseInt(theYear)
 			self._activity = null;
+			
+			
 			$.ajax({
 					// url: 'data/year'+theYear+'.json',
 					url: "http://localhost:8080/BackEnd/rest/year/"+theYear+".json",
@@ -188,7 +220,7 @@ $(function() {
 					success: function(data) {
 						console.log("Got expense from file: " + data);
 						self._expense = new Expense(data)
-						self.listActivities();
+						self.listExpenses();
 
 					},
 					error: function(jqXHR, textStatus, errorThrown) {
@@ -248,12 +280,10 @@ $(function() {
 			}
 		},
 
-		listExpenses: function( expense ){
-			console.log("listExpenses, expense: " + expense);
-
+		listExpenses: function( ){
 			var view3 = new BudgetEntryListView({
-				el: "#budgetEntryInExpense" + expense.get('id'),
-				model: expense
+				el: "#budgetEntryInExpense" + this._expense.get('id'),
+				model: this._expense
 			});
 
 			view3.render();
@@ -264,3 +294,7 @@ $(function() {
 	app = new Application();
 	Backbone.history.start();
 });
+
+function slide(direction){
+	$('#activityListView').hide( "slide", {"direction":direction} );
+}

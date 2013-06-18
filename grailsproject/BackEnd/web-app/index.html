@@ -86,7 +86,7 @@
                 <script id="budgetEntryListTmpl" type="text/x-jquery-tmpl">
                     <div class="budgetEntry-title">
                         <div class="budgetEntry-desc"><input class="desc" type="text" value="${description}" id="#budgetEntry${id}/desc" /></div>
-                        <div class="budgetEntry-amount"><input class="amount" type="text" value="${amount}" id="#budgetEntry${id}/amount" /></div>
+                        <div class="budgetEntry-amount"><input budgetEntryId="${id}" class="amount" type="text" value="${amount}" id="#budgetEntry${id}/amount" /></div>
                             <div class="middle"></div>
                     </div>
                 </script>
