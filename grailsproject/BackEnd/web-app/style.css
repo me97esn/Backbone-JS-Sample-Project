@@ -24,7 +24,7 @@ a:hover {
 }
 .expenseStyle {
     padding: 0px;
-    background-color: #e4ebf4;
+    background-color: #dfe5ec;
     border-style: solid;
     border-width: 0px;
     border-color:  #B9C4D2;
@@ -44,7 +44,7 @@ a:hover {
     border-color:#aab0b6; 
     border-style:solid; 
     border-width:2px; 
-    background-color:#DBE2EA
+    background-color:#eaf0f8
 }
 .expenseList {
     background-color: yellow;
@@ -60,10 +60,11 @@ a:hover {
 .nextYear {
     color: #333333;
 }
+
 .yearHeader {
 
     border-color:#aab0b6; 
     border-style:solid; 
     border-width:2px; 
-    background-color:#DBE2EA
+    background-color:#2A5280
 }

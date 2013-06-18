@@ -154,7 +154,7 @@ $(function() {
 
 		changeYear: function(theYear){
 			self = this;
-			var direction = {2012:'right', 2013:'left'};
+			var direction = {2012:'left', 2013:'right'};
 			$('#content').appendTo('#year' + self._currentYear);
 			$('#year' + self._currentYear).toggle("slide", {"direction":direction[self._currentYear]}, 500, function(){
 				$('#content').appendTo('#year' + theYear);
