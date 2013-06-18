@@ -32,7 +32,7 @@ class YearController {
     }
 
     def show() {
-        def yearInstance = Year.findByYearfield(params.id as int).first()
+        def yearInstance = Year.findByYearfield(params.id as int)
 
         withFormat {
             html {
