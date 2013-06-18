@@ -28,17 +28,20 @@
 
     <body>
         <div class="esfIcon"><img src="http://www.esf.se/Global/StartPage/1/logo.gif"></div>
+        
+
         <div class="yearHeader">
             <div class="prevYear">
-                <a id="prevYear" href="#y/2012"><</a>
+                <a id="prevYear"  href="#year/2012"><</a>
             </div>
 
-            <div class="nextYear"><a id="nextYear" href="#y/2013">></a>
+            <div class="nextYear"><a id="nextYear" href="#year/2013">></a>
             </div>
             <a href="#" >
                 <div id="currentYear" class="currentYear"><!--The year should be displayed by a javascript function here--></div>
             </a>
         </div>
+        <div id="year2012"  class="yearContainer">
 
         <div class="activityListView content" id="activityListView">
             <div id="activityList" class="activityList content">    
@@ -47,7 +50,7 @@
                         <div class="activity">
                         <a href="#y/${$('#currentYear').html()}/activity/${id}">
                         <div class="activity-name">${name}</div> 
-                        <div class="activity-amount">${amount}</div>
+                        <div class="activity-amount right">${amount}</div>
                         </a>
                         </div>
                         <div class="expense expenseStyle" id="expenseInActivity${id}"> </div>
@@ -86,6 +89,10 @@
                 </script>
             </div>
         </div>
+        </div>
+        <div id="year2013"  class="yearContainer">
+        </div>
+
     </body>
 
 </html>

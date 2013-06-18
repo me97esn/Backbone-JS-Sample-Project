@@ -116,7 +116,7 @@ $(function() {
 		routes: {
 			"": "tourList",
 			"tourDetail/:id": "tourDetail",
-			"year/:year": "year",
+			"year/:year": "changeYear",
 			"expense/:expense_id": "expense",
 			"activity/:activity_id": "activity",
 			"y/:theYear(/activity/:activity_id)(/expense/:expense_id)":"yearActivity",
@@ -126,6 +126,7 @@ $(function() {
 		 * Constructor
 		 */
 		initialize: function(options) {
+			$('#year2013').toggle("hide");
 			this.year(2012);
 
 			return this;
@@ -134,13 +135,13 @@ $(function() {
 		redrawYearHeader: function(){
 			var self = this;
 			// TODO read the _years collection and display the current year.
-			$('#currentYear').text(""+self._currentYear)
+			$('#currentYear').text(""+self._currentYear);
+
 			
 		},
 
 		yearActivity: function(theYear, activity_id, expense_id){
 			console.log("theYear:" + theYear + ", activity_id: " + activity_id);
-			this.year(theYear);
 			$('.expense').hide('blind', 500);
 			if(activity_id){
 				this.activity(activity_id);
@@ -152,11 +153,25 @@ $(function() {
 			}
 		},
 
+		changeYear: function(theYear){
+			self = this;
+
+			console.log('changing the year to ' + theYear);
+			var direction = {2012:'right', 2013:'left'}
+			$('#year' + self._currentYear).toggle("slide", {"direction":direction[self._currentYear]}, 500, function(){
+				$('#year'+self._currentYear).toggle("slide", {"direction":direction[self._currentYear]}, 500);
+			});
+							
+			return this.year(theYear);
+		},
+
 		year: function(theYear){
 			var self = this;
-			// TODO read the _years collection and display the current year.
+			
 			self._currentYear = parseInt(theYear)
 			self._activity = null;
+			
+			
 			$.ajax({
 					// url: 'data/year'+theYear+'.json',
 					url: "http://localhost:8080/BackEnd/rest/year/"+theYear+".json",
@@ -268,3 +283,7 @@ $(function() {
 	app = new Application();
 	Backbone.history.start();
 });
+
+function slide(direction){
+	$('#activityListView').hide( "slide", {"direction":direction} );
+}
