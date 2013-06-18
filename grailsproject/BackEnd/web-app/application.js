@@ -22,7 +22,6 @@ $(function() {
 	ActivityCollection = Backbone.Collection.extend({
 		model: Activity,
 		comparator: function(item) {
-			console.log('::: sorting the collection by name');
 			return item.get('name');
 		}
 	});
@@ -127,7 +126,7 @@ $(function() {
 		 */
 		initialize: function(options) {
 			$('#year2013').toggle("hide");
-			this.year(2012);
+			this.changeYear(2012);
 
 			return this;
 		},
@@ -155,12 +154,15 @@ $(function() {
 
 		changeYear: function(theYear){
 			self = this;
-
-			console.log('changing the year to ' + theYear);
-			var direction = {2012:'right', 2013:'left'}
+			var direction = {2012:'right', 2013:'left'};
+			$('#content').appendTo('#year' + self._currentYear);
 			$('#year' + self._currentYear).toggle("slide", {"direction":direction[self._currentYear]}, 500, function(){
+				$('#content').appendTo('#year' + theYear);
 				$('#year'+self._currentYear).toggle("slide", {"direction":direction[self._currentYear]}, 500);
 			});
+
+
+			console.log('changing the year to ' + theYear);
 							
 			return this.year(theYear);
 		},

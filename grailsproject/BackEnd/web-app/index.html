@@ -41,8 +41,7 @@
                 <div id="currentYear" class="currentYear"><!--The year should be displayed by a javascript function here--></div>
             </a>
         </div>
-        <div id="year2012"  class="yearContainer">
-
+        <div class="content" id="content" />
         <div class="activityListView content" id="activityListView">
             <div id="activityList" class="activityList content">    
                 <script id="activityListTmpl" type="text/x-jquery-tmpl">
@@ -77,18 +76,21 @@
 
             <div id="budgetEntryList" class="budgetEntryList">
                 <!--                <div class="budgetEntry-title">Titel 1</div> 
-                                <div class="budgetEntry-title">Titel 2</div> -->
+                                <div class="budgetEntry-title">Titel 2</div>
                 <div class="budgetEntry-desc">Beskrivning</div>
-                <div class="budgetEntry-amount">Belopp</div>
+                <div class="budgetEntry-amount">Belopp</div>-->
                 <script id="budgetEntryListTmpl" type="text/x-jquery-tmpl">
                     <div class="budgetEntry-title">
 
+                    
                     <div class="budgetEntry-desc"><input type="text" value="${description}" id="#budgetEntry${id}/desc" /></div> 
                     <div class="budgetEntry-amount"><input type="text" value="${amount}" id="#budgetEntry${id}/amount" /></div>
                     </div>
                 </script>
             </div>
         </div>
+    </div>
+        <div id="year2012"  class="yearContainer">
         </div>
         <div id="year2013"  class="yearContainer">
         </div>
