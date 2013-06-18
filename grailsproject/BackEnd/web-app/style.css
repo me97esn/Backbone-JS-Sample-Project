@@ -9,12 +9,25 @@ a:hover {
 
 }
 input {
-
-    border: 1px solid #2A5280;
-
+    
+    border: 2px solid #2A5280;
+    color: #2A5280;
     background: #FFFAF3;
-
+    font-size: 10px;
 }
+input.amount {
+    width: 100px;
+    text-align:right;
+}
+input.desc {
+    width: 200px;
+}
+input:focus{
+    color:#f23;
+    font-weight: bold;
+    border: 2px solid #f23;
+}
+
 .activity{
     height: 26px;
     /*background: url('images/container_top.png');*/
