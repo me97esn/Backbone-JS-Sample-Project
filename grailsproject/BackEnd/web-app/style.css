@@ -8,7 +8,13 @@ a:hover {
     text-decoration: none;
 
 }
+input {
 
+    border: 1px solid #2A5280;
+
+    background: #FFFAF3;
+
+}
 .activity{
     height: 26px;
     /*background: url('images/container_top.png');*/

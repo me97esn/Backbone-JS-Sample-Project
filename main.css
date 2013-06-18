@@ -1,20 +1,31 @@
-body {
+fbody {
     background-color:#ffffff;
 }
 
+.budgetEntry-desc{
+    margin-right: 5px;
+}
+.budgetEntry-amount{
+    float: end;
+    margin-right: 5px;
+    line-break: normal;
+}
 
-.right
-{
-    text-align: right;
+.budgetEntry-title{
+    line-break: normal;
+}
+
+.budgetEntry-desc, .budgetEntry-amount {
+    display: inline-block;
+    line-break: normal;
 }
 .expenseRow{
-    padding: 5px;
-    border: 2px solid white;
+padding: 5px;
+border: 2px solid white;
 }
 .activityListView{
 
     float:left;
-    width:100%; 
     margin-left: 30px;
     margin-top: 20px;
 
@@ -23,17 +34,19 @@ body {
 .activity{
     margin-left: 30px;
     margin-top: 20px;
-    width:93%; 
+
 }
 
 .activity-name{
-    width:60%; 
+    margin-right: 80px;
+    font-size: 14px;
 }
 
 .activity-amount{
-    width:35%;  
     float: end;
 }
+
+
 
 .activity-name, .activity-amount{
     display: inline-block;
@@ -42,20 +55,18 @@ body {
 
 .expense
 {
-    width:91%; 
-    margin-left: 40px;
+    margin-left: 30px;
     margin-top: 0px;
 }
 
 .expense-name
 {
-    width:60%;
+
 }
 
 .expense-amount
 {
-    width:37%;
-    float: end;
+            float:right;
 }
 
 .expense-name, .expense-amount{
@@ -72,53 +83,31 @@ body {
 }
 
 
+
 .budgetEntry{
     margin-left: 30px;
     margin-top: 20px;
     line-break: normal;
 }
 
-.budgetEntry-desc{
-    width:60%;
-    /*    margin-right: 95px;
-        margin-left: 95px;*/
-}
-.budgetEntry-amount{
-    width:38%;
-    float: end;
-    margin-right: 5px;
-    line-break: normal;
-    text-align: right;
-}
 
-.budgetEntry-title{
-    line-break: normal;
-}
-
-.budgetEntry-desc, .budgetEntry-amount {
-    display: inline-block;
-    line-break: normal;
-}
 
 .prevYear {
     float:left;
     margin-left: 10px;
     margin-top: 5px;
 }
-
 .currentYear {
     position:absolute;
     right:50%;
     width: 30px;
     margin-top: 5px;
 }
-
 .nextYear {
     float:right;
     margin-right: 10px;
     margin-top: 5px;
 }
-
 .yearHeader {
     position:relative;
     height:30px; width:100%; 

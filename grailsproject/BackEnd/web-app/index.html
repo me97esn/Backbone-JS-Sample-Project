@@ -49,7 +49,8 @@
                         <div class="activity">
                         <a href="#y/${$('#currentYear').html()}/activity/${id}">
                         <div class="activity-name">${name}</div> 
-                        <div class="activity-amount right">${amount}</div>
+                        <div class="activity-amount">${amount}</div>
+                        <div class="middle"></div>
                         </a>
                         </div>
                         <div class="expense expenseStyle" id="expenseInActivity${id}"> </div>
@@ -63,8 +64,11 @@
                 <script id="expenseListTmpl" type="text/x-jquery-tmpl">
                     <div class="expenseRow">
                         <a href="#expense/${id}">
-                        <div class="expense-name">${name}</div> 
-                        <div class="expense-amount">${amount}</div>
+                        <div class="expense-heading">
+                            <div class="expense-name">${name}</div> 
+                            <div class="expense-amount">${amount}</div>
+                            <div class="middle"></div>
+                        </div>
                         </a>
                         <div class="budgetEntry" id="budgetEntryInExpense${id}"> </div>
                     </div>
@@ -81,10 +85,9 @@
                 <div class="budgetEntry-amount">Belopp</div>-->
                 <script id="budgetEntryListTmpl" type="text/x-jquery-tmpl">
                     <div class="budgetEntry-title">
-
-                    
-                    <div class="budgetEntry-desc"><input type="text" value="${description}" id="#budgetEntry${id}/desc" /></div> 
-                    <div class="budgetEntry-amount"><input type="text" value="${amount}" id="#budgetEntry${id}/amount" /></div>
+                        <div class="budgetEntry-desc"><input type="text" value="${description}" id="#budgetEntry${id}/desc" /></div>
+                        <div class="budgetEntry-amount"><input type="text" value="${amount}" id="#budgetEntry${id}/amount" /></div>
+                            <div class="middle"></div>
                     </div>
                 </script>
             </div>

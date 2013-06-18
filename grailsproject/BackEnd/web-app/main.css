@@ -3,75 +3,79 @@ body {
 }
 
 .budgetEntry-desc{
-    margin-right: 5px;
 }
 .budgetEntry-amount{
-    float: end;
-    margin-right: 5px;
-    line-break: normal;
+    float: right;
 }
 
 .budgetEntry-title{
-    line-break: normal;
 }
 
 .budgetEntry-desc, .budgetEntry-amount {
     display: inline-block;
-    line-break: normal;
 }
 .expenseRow{
-padding: 5px;
+
 border: 2px solid white;
 }
+
+
 .activityListView{
 
     float:left;
     margin-left: 30px;
     margin-top: 20px;
+    width:40%;
+    
+
+}
+.activityList{
 
 
 }
 .activity{
-    margin-left: 30px;
-    margin-top: 20px;
+Text-align:center;
+margin-top: 20px;
+
 
 }
 
 .activity-name{
-    margin-right: 80px;
-    font-size: 14px;
+        float:left;
+        
 }
 
 .activity-amount{
-    float: end;
+    float:right;
+            
 }
 
 
 
 .activity-name, .activity-amount{
     display: inline-block;
-    line-break: normal;
+        
+
 }
 
 .expense
 {
-    margin-left: 30px;
-    margin-top: 0px;
+width:100%;
+margin: 0px;
 }
 
 .expense-name
 {
-    margin-right: 80px
+
 }
 
 .expense-amount
 {
-    float: end;
+            float:right;
 }
 
 .expense-name, .expense-amount{
     display: inline-block;
-    line-break: normal;
     margin-top: 10px;
 }
 
@@ -87,7 +91,6 @@ border: 2px solid white;
 .budgetEntry{
     margin-left: 30px;
     margin-top: 20px;
-    line-break: normal;
 }
 
 
