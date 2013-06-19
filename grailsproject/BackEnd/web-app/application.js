@@ -303,6 +303,16 @@ $(function() {
 						self._activity = new Activity(data);
 						self.listActivities(  );
 
+
+						var i = 1;
+						_.each(self._activity.get('expenseCollection'), function(expense){
+							$(document).bind('keydown', 'alt+f'+i, function assets() {
+							   app.navigate('#expense/'+expense['id'], {trigger: true}); 
+							   return false;
+							});
+							i++;
+						})
+
 					}
 				});
 			self.redrawYearHeader();
