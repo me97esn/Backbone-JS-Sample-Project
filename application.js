@@ -61,8 +61,14 @@ $(function() {
 	var BudgetEntryListView = Backbone.View.extend({
 		// el: '#budgetEntryList',
 		template: $("#budgetEntryListTmpl").template(),
-		events: { "change input": "amountChanged" }, 
-		
+		events: { 
+			"change input": "amountChanged" ,
+			'keypress :input': 'logKey'
+		}, 
+
+		logKey: function(e) {
+			console.log(e.type, e.keyCode);
+		},
 		render: function() {
 			var self = this;
 			console.log("el: " + self.el);			
@@ -239,7 +245,15 @@ $(function() {
 						//create Tour collect and Set Data
 						self._year = new Year(data);
 						self.listActivities();
-
+						var i = 1;
+						_.each(self._year.get('activityCollection'), function(activity){
+							$(document).bind('keydown', 'f'+i, function assets() {
+							   app.navigate('#y/'+ self._currentYear +'/activity/' + activity['id'], {trigger: true}); 
+							   return false;
+							});
+							i++;
+						})
+						
 					},
 					 error: function(jqXHR, textStatus, errorThrown) {
 					    console.log(jqXHR.status);
@@ -341,3 +355,5 @@ $(function() {
 function slide(direction){
 	$('#activityListView').hide( "slide", {"direction":direction} );
 }
+
+
