@@ -10,8 +10,6 @@ $(function() {
 	Activity = Backbone.Model.extend({});
 	Expense = Backbone.Model.extend({});
 
-
-
 	YearCollection = Backbone.Collection.extend({
 		model: Year,
 		comparator: function(item) {
@@ -79,6 +77,47 @@ $(function() {
 			.show( 'blind', 500 );
 			return this;
 		},
+		changeAmountInAllDivs: function(){
+			console.log('change the amount in the Dom');
+
+			// var currentYear = (app._currentYear);
+			var activity_id = app._activity.get('id');
+			$.ajax({
+					url: "http://localhost:8080/BackEnd/rest/activity/"+activity_id+".json",
+					dataType: 'json',
+					data: {},
+					success: function(data) {
+						activity = new Activity(data)
+						$('#activity-amount_' + activity_id).html(activity.get('amount'));
+					},
+					 error: function(jqXHR, textStatus, errorThrown) {
+					    console.log(jqXHR.status);
+					    console.log(textStatus);
+					    console.log(errorThrown);
+					}
+				});
+
+
+			var expense_id = app._expense.get('id');
+
+			$.ajax({
+					url: "http://localhost:8080/BackEnd/rest/expense/"+expense_id+".json",
+					dataType: 'json',
+					data: {},
+					success: function(data) {
+						expense = new Expense(data)
+						$('#expense-amount_' + expense_id).html(expense.get('amount'));
+					},
+					 error: function(jqXHR, textStatus, errorThrown) {
+					    console.log(jqXHR.status);
+					    console.log(textStatus);
+					    console.log(errorThrown);
+					}
+				});
+
+
+
+		},
 		amountChanged: function(evt){
 			var field = $(evt.currentTarget);
 			var data = {};
@@ -106,11 +145,11 @@ $(function() {
 					}
 				});
 			// TODO re-read the data and reload the views
-			console.log("---------");
-
-			console.log(app._currentYear);
-
-			app.yearActivity(app._currentYear, app._activity.get('id'), app._expense.get('id'));
+			this.changeAmountInAllDivs();
+			// app.year(app._currentYear);
+			// app.activity(activity_id);
+			// app.expense(expense_id);
+			
 			// listActivities();
 		},
 	});
