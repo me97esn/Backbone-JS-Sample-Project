@@ -83,12 +83,11 @@ $(function() {
 			var field = $(evt.currentTarget);
 			var data = {};
 			data['amount'] = field.val();
-			console.log('------');
-			console.log(field.parent('budgetEntryId'));
-			data['id']=field.parent('budgetEntryId').get('budgetEntryId');
+
+			data['id']=field.attr('budgetEntryId');
 			console.log('updating the amount of id ' + data['id']);
 			$.ajax({
-					url: "http://localhost:8080/BackEnd/rest/budgetEntry/3.json",
+					url: "http://localhost:8080/BackEnd/rest/budgetEntry/"+data['id']+".json",
 					type: 'POST',
 				    data: JSON.stringify(data),
 				    contentType: 'application/json; charset=utf-8',
@@ -107,6 +106,11 @@ $(function() {
 					}
 				});
 			// TODO re-read the data and reload the views
+			console.log("---------");
+
+			console.log(app._currentYear);
+
+			app.yearActivity(app._currentYear, app._activity.get('id'), app._expense.get('id'));
 			// listActivities();
 		},
 	});

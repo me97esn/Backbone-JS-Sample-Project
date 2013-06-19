@@ -90,7 +90,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/grails-app/controllers/backend/BudgetEntryController.groovy" line="26" class="backend.BudgetEntryController" package="backend">
+      <breakpoint url="file://$PROJECT_DIR$/grails-app/controllers/backend/BudgetEntryController.groovy" line="23" class="backend.BudgetEntryController" package="backend">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
