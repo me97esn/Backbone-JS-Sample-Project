@@ -12,7 +12,7 @@
     <file path="/YearController.groovy" changelist="758d71c7-799e-4157-8de1-9836ebdb6861" time="1371559664825" ignored="false" />
     <file path="/Activity.groovy" changelist="758d71c7-799e-4157-8de1-9836ebdb6861" time="1371325189350" ignored="false" />
     <file path="/Expense.groovy" changelist="758d71c7-799e-4157-8de1-9836ebdb6861" time="1371325218081" ignored="false" />
-    <file path="/BudgetEntryController.groovy" changelist="758d71c7-799e-4157-8de1-9836ebdb6861" time="1371624161554" ignored="false" />
+    <file path="/BudgetEntryController.groovy" changelist="758d71c7-799e-4157-8de1-9836ebdb6861" time="1371625405356" ignored="false" />
     <file path="/BudgetEntry.groovy" changelist="758d71c7-799e-4157-8de1-9836ebdb6861" time="1371325198323" ignored="false" />
     <file path="/BootStrap.groovy" changelist="758d71c7-799e-4157-8de1-9836ebdb6861" time="1371242076235" ignored="false" />
     <file path="/index.html" changelist="758d71c7-799e-4157-8de1-9836ebdb6861" time="1371216067527" ignored="false" />
@@ -203,7 +203,7 @@
       <file leaf-file-name="BudgetEntryController.groovy" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/grails-app/controllers/backend/BudgetEntryController.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="0" selection-start="706" selection-end="706" vertical-scroll-proportion="0.33333334">
+            <state line="31" column="24" selection-start="875" selection-end="875" vertical-scroll-proportion="0.50574714">
               <folding>
                 <element signature="e#17#46#0" expanded="true" />
               </folding>
@@ -658,7 +658,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/controllers/backend/BudgetEntryController.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="0" selection-start="706" selection-end="706" vertical-scroll-proportion="0.33333334">
+        <state line="31" column="24" selection-start="875" selection-end="875" vertical-scroll-proportion="0.50574714">
           <folding>
             <element signature="e#17#46#0" expanded="true" />
           </folding>

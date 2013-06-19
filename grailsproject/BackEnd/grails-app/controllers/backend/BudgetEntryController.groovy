@@ -21,7 +21,7 @@ class BudgetEntryController {
     }
 
     def save() {
-        def budgetEntryInstance = BudgetEntry.read(request.JSON.id as int)
+        def budgetEntryInstance = BudgetEntry.get(request.JSON.id as int)
         budgetEntryInstance.amount = request.JSON.amount as Float
 
         if (!budgetEntryInstance.save(flush: true)) {
