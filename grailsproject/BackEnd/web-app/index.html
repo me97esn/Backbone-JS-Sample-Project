@@ -62,7 +62,7 @@
         <div id="expenseListView content" class="expenseListView">
             <div id="expenseList" class="expenseList">
                 <script id="expenseListTmpl" type="text/x-jquery-tmpl">
-                    <div class="expenseRow" id="#expenseRow/${id}">
+                    <div class="expenseRow">
                         <a href="#expense/${id}">
                         <div class="expense-heading">
                             <div  class="expense-name">${name}</div> 
@@ -84,7 +84,7 @@
                 <div class="budgetEntry-desc">Beskrivning</div>
                 <div class="budgetEntry-amount">Belopp</div>-->
                 <script id="budgetEntryListTmpl" type="text/x-jquery-tmpl">
-                    <div class="budgetEntry-title" id="#budgetEntry-title/${id}">
+                    <div class="budgetEntry-title" id="#budgetEntry-title${id}">
                     <div class="budgetEntry-desc"><input class="desc" type="text" value="${description}" id="#budgetEntry${id}/desc" /></div>
                     <div class="budgetEntry-amount"><input budgetEntryId="${id}" class="amount" type="text" value="${amount}" id="#budgetEntry${id}/amount" /></div>
                     <div class="middle"></div>

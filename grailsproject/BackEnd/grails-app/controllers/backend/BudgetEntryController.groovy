@@ -32,7 +32,8 @@ class BudgetEntryController {
 
         if (!budgetEntryInstance.save(flush: true)) {
             response.setStatus(500, "Could not save entity.")
-            return
+
+            render "Could not save entity." as JSON
         }
 
         render budgetEntryInstance as JSON

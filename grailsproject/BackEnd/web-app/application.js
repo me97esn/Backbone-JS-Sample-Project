@@ -64,10 +64,6 @@ $(function() {
         template: $("#budgetEntryListTmpl").template(),
         events: {
             "change input": "amountChanged",
-            'keypress :input': 'logKey'
-        },
-        logKey: function(e) {
-            console.log(e.type, e.keyCode);
         },
         render: function() {
             var self = this;
@@ -94,10 +90,69 @@ $(function() {
                    .hide()
                    .appendTo(self.el)
                    .show('blind', 500);
+                
+    			$(".budgetEntry-title").draggable({revert: false, cursor: 'move', start: handleDrag});
+                $(".budgetEntry").droppable({tolerance: 'touch', drop: handleDrop});
             
-			$(".budgetEntry-title").draggable({revert: false, cursor: 'move', start: handleDrag});
-            $(".expenseRow").droppable({tolerance: 'touch', drop: handleDrop});
 
+            return this;
+        },
+        
+         
+        amountChanged: function(evt) {
+            self = this;
+            var field = $(evt.currentTarget);
+            var data = {};
+            data['amount'] = field.val();
+
+            data['id'] = field.attr('budgetEntryId');
+            console.log('updating the amount of id ' + data['id']);
+            $.ajax({
+                url: "http://localhost:8080/BackEnd/rest/budgetEntry/" + data['id'] + ".json",
+                type: 'POST',
+                data: JSON.stringify(data),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success: function(data) {
+                    console.log("Updated successfully: " + data);
+                    app.changeAmountInAllDivs();
+                    //create Tour collect and Set Data
+                    // self._year = new Year(data);
+                    // self.listActivities();
+
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log(jqXHR.status);
+                    console.log(textStatus);
+                    console.log(errorThrown);
+                }
+            });
+        },
+    });
+
+    //controller
+    var Application = Backbone.Router.extend({
+        _tourListView: null,
+        //store local tourlist object
+        _tourDetailView: null,
+        //store local tourdetail object
+        _year: null,
+        //store local tours collection
+        _currentYear: null,
+        routes: {
+            "": "tourList",
+            "tourDetail/:id": "tourDetail",
+            "year/:year": "changeYear",
+            "expense/:expense_id": "expense",
+            "activity/:activity_id": "activity",
+            "y/:theYear(/activity/:activity_id)(/expense/:expense_id)": "yearActivity",
+        },
+        /*
+         * Constructor
+         */
+        initialize: function(options) {
+            $('#year2013').toggle("hide");
+            this.changeYear(2012);
 
             return this;
         },
@@ -138,71 +193,6 @@ $(function() {
                     console.log(errorThrown);
                 }
             });
-
-
-
-        },
-        amountChanged: function(evt) {
-            var field = $(evt.currentTarget);
-            var data = {};
-            data['amount'] = field.val();
-
-            data['id'] = field.attr('budgetEntryId');
-            console.log('updating the amount of id ' + data['id']);
-            $.ajax({
-                url: "http://localhost:8080/BackEnd/rest/budgetEntry/" + data['id'] + ".json",
-                type: 'POST',
-                data: JSON.stringify(data),
-                contentType: 'application/json; charset=utf-8',
-                dataType: 'json',
-                success: function(data) {
-                    console.log("Updated successfully: " + data);
-                    //create Tour collect and Set Data
-                    // self._year = new Year(data);
-                    // self.listActivities();
-
-                },
-                error: function(jqXHR, textStatus, errorThrown) {
-                    console.log(jqXHR.status);
-                    console.log(textStatus);
-                    console.log(errorThrown);
-                }
-            });
-            // TODO re-read the data and reload the views
-            this.changeAmountInAllDivs();
-            // app.year(app._currentYear);
-            // app.activity(activity_id);
-            // app.expense(expense_id);
-
-            // listActivities();
-        },
-    });
-
-    //controller
-    var Application = Backbone.Router.extend({
-        _tourListView: null,
-        //store local tourlist object
-        _tourDetailView: null,
-        //store local tourdetail object
-        _year: null,
-        //store local tours collection
-        _currentYear: null,
-        routes: {
-            "": "tourList",
-            "tourDetail/:id": "tourDetail",
-            "year/:year": "changeYear",
-            "expense/:expense_id": "expense",
-            "activity/:activity_id": "activity",
-            "y/:theYear(/activity/:activity_id)(/expense/:expense_id)": "yearActivity",
-        },
-        /*
-         * Constructor
-         */
-        initialize: function(options) {
-            $('#year2013').toggle("hide");
-            this.changeYear(2012);
-
-            return this;
         },
         redrawYearHeader: function() {
             var self = this;
@@ -373,17 +363,7 @@ function slide(direction) {
     $('#activityListView').hide("slide", {"direction": direction});
 }
 
-function handleDrag() {
-    console.log("handleDrag" + $(this).attr("id"));
-    dragId = $(this).attr("id").substring(19);
-}
 
-function handleDrop() {
-    var dropId = $(this).attr("id").substring(12);
-
-    console.log("handleDrop drag:" + dragId + " to:" + dropId);
-    dragId = null;
-}
 
 $(document).bind('keydown', 'Alt+right', function assets() {
     app.navigate('#year/2013', {trigger: true});
@@ -393,3 +373,40 @@ $(document).bind('keydown', 'Alt+left', function assets() {
     app.navigate('#year/2012', {trigger: true});
     return false;
 });
+
+function handleDrag() {
+    console.log("handleDrag" + $(this).attr("id"));
+    dragId = $(this);
+};
+
+function handleDrop() {
+    var element = $(this)
+    var expense_id = $(this).attr("id").substring(20);
+    var budgetEntry_id = dragId.attr("id").substring(18);
+
+    var data = {"id":budgetEntry_id,"expense":{"id":expense_id}};
+    
+    console.log('updating the expense id of budgetentry ' + budgetEntry_id + ' to ' + expense_id);
+    
+    dragId.appendTo( element );
+
+     $.ajax({
+        url: "http://localhost:8080/BackEnd/rest/budgetEntry/" + budgetEntry_id + ".json",
+        type: 'POST',
+        data: JSON.stringify(data),
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+
+        success: function(data) {
+            console.log("Updated successfully: " + data);
+            app.changeAmountInAllDivs();
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.log(jqXHR.status);
+            console.log(textStatus);
+            console.log(errorThrown);
+        }
+    });
+    dragId = null;
+
+};
