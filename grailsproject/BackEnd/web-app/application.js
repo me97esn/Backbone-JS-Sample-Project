@@ -75,27 +75,30 @@ $(function() {
             console.log("+++ Rendering the BudgetEntryListView with data: " + self.model.get('budgetEntryCollection'));
             $('#budgetEntryList').empty();
 
-            if ($(self.el).is(":empty"))
-            {
-                $.tmpl(self.template,
-                        self.model.get('budgetEntryCollection'))
-                        .hide()
-                        .appendTo(self.el)
-                        .show('blind', 500);
-            }
-            else {
-                $(self.el).empty()
-            }
-            $(".budgetEntry-title").draggable({revert: false, cursor: 'move', start: handleDrag});
+            // if ($(self.el).is(":empty"))
+            // {
+            //     $.tmpl(self.template,
+            //             self.model.get('budgetEntryCollection'))
+            //             .hide()
+            //             .appendTo(self.el)
+            //             .show('blind', 500);
+            // }
+            // else {
+            //     $(self.el).empty()
+            // }
+            
+
+           $.tmpl(
+                   self.template,
+                   self.model.get('budgetEntryCollection'))
+                   .hide()
+                   .appendTo(self.el)
+                   .show('blind', 500);
+            
+			$(".budgetEntry-title").draggable({revert: false, cursor: 'move', start: handleDrag});
             $(".expenseRow").droppable({tolerance: 'touch', drop: handleDrop});
 
-//
-//            $.tmpl(
-//                    self.template,
-//                    self.model.get('budgetEntryCollection'))
-//                    .hide()
-//                    .appendTo(self.el)
-//                    .show('blind', 500);
+
             return this;
         },
         changeAmountInAllDivs: function() {
