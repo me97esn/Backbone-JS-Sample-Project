@@ -88,7 +88,7 @@ $(function() {
 					data: {},
 					success: function(data) {
 						activity = new Activity(data)
-						$('.activity-amount').html(activity.get('amount'));
+						$('#activity-amount_' + activity_id).html(activity.get('amount'));
 					},
 					 error: function(jqXHR, textStatus, errorThrown) {
 					    console.log(jqXHR.status);
@@ -97,8 +97,24 @@ $(function() {
 					}
 				});
 
-			
+
 			var expense_id = app._expense.get('id');
+
+			$.ajax({
+					url: "http://localhost:8080/BackEnd/rest/expense/"+expense_id+".json",
+					dataType: 'json',
+					data: {},
+					success: function(data) {
+						expense = new Expense(data)
+						$('#expense-amount_' + expense_id).html(expense.get('amount'));
+					},
+					 error: function(jqXHR, textStatus, errorThrown) {
+					    console.log(jqXHR.status);
+					    console.log(textStatus);
+					    console.log(errorThrown);
+					}
+				});
+
 
 
 		},
