@@ -82,23 +82,23 @@ $(function() {
             // else {
             //     $(self.el).empty()
             // }
-            
 
-           $.tmpl(
-                   self.template,
-                   self.model.get('budgetEntryCollection'))
-                   .hide()
-                   .appendTo(self.el)
-                   .show('blind', 500);
-                
-                $(".budgetEntry-title").draggable({revert: false, cursor: 'move', start: handleDrag});
-                $(".budgetEntry").droppable({tolerance: 'touch', drop: handleDrop});
-            
+
+            $.tmpl(
+                    self.template,
+                    self.model.get('budgetEntryCollection'))
+                    .hide()
+                    .appendTo(self.el)
+                    .show('blind', 500);
+
+            $(".budgetEntry-title").draggable({revert: false, cursor: 'move', start: handleDrag});
+            $(".budgetEntry").droppable({tolerance: 'touch', drop: handleDrop});
+            $(".activity").droppable({tolerance: 'touch', over: handleOverActivity});
+            $(".expenseRow").droppable({tolerance: 'touch', over: handleOverExpense});
+
 
             return this;
         },
-        
-         
         amountChanged: function(evt) {
             self = this;
             var field = $(evt.currentTarget);
@@ -235,8 +235,8 @@ $(function() {
 
 
             $.ajax({
-                // url: 'data/year'+theYear+'.json',
-                url: "http://localhost:8080/BackEnd/rest/year/" + theYear + ".json",
+                url: 'data/year' + theYear + '.json',
+//                url: "http://localhost:8080/BackEnd/rest/year/" + theYear + ".json",
                 // url: "http://172.29.194.195:8080/DemoProject/webresources/demo2.entity.yearobj/1",
 
                 dataType: 'json',
@@ -270,8 +270,8 @@ $(function() {
             console.log("Get the budgetEntry " + expense_id + " with rest...");
 
             $.ajax({
-                url: 'http://localhost:8080/BackEnd/rest/expense/' + expense_id + '.json',
-                // url: 'data/expense'+expense_id+'.json',
+//                url: 'http://localhost:8080/BackEnd/rest/expense/' + expense_id + '.json',
+                url: 'data/expense' + expense_id + '.json',
                 dataType: 'json',
                 data: {},
                 success: function(data) {
@@ -291,9 +291,8 @@ $(function() {
             var self = this;
             console.log("Get the activity " + activity_id + " with rest...");
             $.ajax({
-                url: 'http://localhost:8080/BackEnd/rest/activity/' + activity_id + '.json',
-                // url: 'data/activity'+activity_id+'.json',
-
+//                url: 'http://localhost:8080/BackEnd/rest/activity/' + activity_id + '.json',
+                url: 'data/activity' + activity_id + '.json',
                 dataType: 'json',
                 data: {},
                 success: function(data) {
@@ -374,29 +373,121 @@ $(document).bind('keydown', 'Alt+left', function assets() {
     return false;
 });
 
+function handleOverActivity() {
+    console.log("handleOver");
+    var activity = $(this);
+    var activityId = activity.attr("id").substring(8);
+    console.log("activity " + activityId);
+    var c = $("#expenseInActivity" + activityId).children().length;
+
+    console.log(c);
+
+    if (c < 1)
+    {
+        console.log("empty");
+        var self = app;
+        console.log("Get the activity " + activityId + " with rest...");
+        $.ajax({
+//                url: 'http://localhost:8080/BackEnd/rest/activity/' + activity_id + '.json',
+            url: 'data/activity' + activityId + '.json',
+            dataType: 'json',
+            data: {},
+            success: function(data) {
+                console.log("Got activity from file: " + data);
+                // TODO detta ska inte sparas i enb variable, eller så måste den tömmas vid tex year()
+                self._activity = new Activity(data);
+                self.listActivities(  );
+
+
+                var i = 1;
+                _.each(self._activity.get('expenseCollection'), function(expense) {
+                    $(document).bind('keydown', 'alt+f' + i, function assets() {
+                        app.navigate('#expense/' + expense['id'], {trigger: true});
+                        return false;
+                    });
+                    i++;
+                })
+
+            }
+        });
+        app.redrawYearHeader();
+
+    } else {
+        console.log("not empty");
+    }
+
+}
+
+function handleOverExpense() {
+    console.log("handleOver");
+    var expense = $(this);
+    var expenseId = expense.attr("id").substring(10);
+    console.log("expenseRow " + expenseId);
+    var c = $("#budgetEntryInExpense" + expenseId).children().length;
+
+    console.log(c);
+
+    if (c < 1)
+    {
+        console.log("empty");
+        var self = app;
+
+        console.log("Get the budgetEntry " + expenseId + " with rest...");
+
+        $.ajax({
+//                url: 'http://localhost:8080/BackEnd/rest/expense/' + expense_id + '.json',
+            url: 'data/expense' + expenseId + '.json',
+            dataType: 'json',
+            data: {},
+            success: function(data) {
+                console.log("Got expense from file: " + data);
+                self._expense = new Expense(data)
+                self.listExpenses();
+
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.log(jqXHR.status);
+                console.log(textStatus);
+                console.log(errorThrown);
+            }
+        });
+
+    } else {
+        console.log("not empty");
+    }
+
+}
+
+
+
 function handleDrag() {
     console.log("handleDrag" + $(this).attr("id"));
     dragId = $(this);
-};
+}
+
 
 function handleDrop() {
     var element = $(this)
     var expense_id = $(this).attr("id").substring(20);
     var budgetEntry_id = dragId.attr("id").substring(18);
 
-    var data = {"id":budgetEntry_id,"expense":{"id":expense_id}};
-    
-    console.log('updating the expense id of budgetentry ' + budgetEntry_id + ' to ' + expense_id);
-    
-    dragId.appendTo( element );
+    var data = {"id": budgetEntry_id, "expense": {"id": expense_id}};
 
-     $.ajax({
+    console.log('updating the expense id of budgetentry ' + budgetEntry_id + ' to ' + expense_id);
+
+    dragId.appendTo(element);
+
+//    moveBudgetEntry(data)
+    dragId = null;
+}
+
+function moveBudgetEntry(data) {
+    $.ajax({
         url: "http://localhost:8080/BackEnd/rest/budgetEntry/" + budgetEntry_id + ".json",
         type: 'POST',
         data: JSON.stringify(data),
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',
-
         success: function(data) {
             console.log("Updated successfully: " + data);
             app.changeAmountInAllDivs();
@@ -407,6 +498,7 @@ function handleDrop() {
             console.log(errorThrown);
         }
     });
-    dragId = null;
 
-};
+
+}
+;
