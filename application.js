@@ -235,8 +235,8 @@ $(function() {
 
 
             $.ajax({
-                url: 'data/year' + theYear + '.json',
-//                url: "http://localhost:8080/BackEnd/rest/year/" + theYear + ".json",
+//                url: 'data/year' + theYear + '.json',
+                url: "http://localhost:8080/BackEnd/rest/year/" + theYear + ".json",
                 // url: "http://172.29.194.195:8080/DemoProject/webresources/demo2.entity.yearobj/1",
 
                 dataType: 'json',
@@ -270,8 +270,8 @@ $(function() {
             console.log("Get the budgetEntry " + expense_id + " with rest...");
 
             $.ajax({
-//                url: 'http://localhost:8080/BackEnd/rest/expense/' + expense_id + '.json',
-                url: 'data/expense' + expense_id + '.json',
+                url: 'http://localhost:8080/BackEnd/rest/expense/' + expense_id + '.json',
+//                url: 'data/expense' + expense_id + '.json',
                 dataType: 'json',
                 data: {},
                 success: function(data) {
@@ -291,8 +291,8 @@ $(function() {
             var self = this;
             console.log("Get the activity " + activity_id + " with rest...");
             $.ajax({
-//                url: 'http://localhost:8080/BackEnd/rest/activity/' + activity_id + '.json',
-                url: 'data/activity' + activity_id + '.json',
+                url: 'http://localhost:8080/BackEnd/rest/activity/' + activity_id + '.json',
+//                url: 'data/activity' + activity_id + '.json',
                 dataType: 'json',
                 data: {},
                 success: function(data) {
@@ -388,8 +388,8 @@ function handleOverActivity() {
         var self = app;
         console.log("Get the activity " + activityId + " with rest...");
         $.ajax({
-//                url: 'http://localhost:8080/BackEnd/rest/activity/' + activity_id + '.json',
-            url: 'data/activity' + activityId + '.json',
+            url: 'http://localhost:8080/BackEnd/rest/activity/' + activity_id + '.json',
+//            url: 'data/activity' + activityId + '.json',
             dataType: 'json',
             data: {},
             success: function(data) {
@@ -435,8 +435,8 @@ function handleOverExpense() {
         console.log("Get the budgetEntry " + expenseId + " with rest...");
 
         $.ajax({
-//                url: 'http://localhost:8080/BackEnd/rest/expense/' + expense_id + '.json',
-            url: 'data/expense' + expenseId + '.json',
+            url: 'http://localhost:8080/BackEnd/rest/expense/' + expense_id + '.json',
+//            url: 'data/expense' + expenseId + '.json',
             dataType: 'json',
             data: {},
             success: function(data) {
@@ -477,7 +477,7 @@ function handleDrop() {
 
     dragId.appendTo(element);
 
-//    moveBudgetEntry(data)
+    moveBudgetEntry(data)
     dragId = null;
 }
 
