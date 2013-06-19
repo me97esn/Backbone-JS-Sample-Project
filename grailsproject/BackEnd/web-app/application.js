@@ -106,6 +106,11 @@ $(function() {
 					}
 				});
 			// TODO re-read the data and reload the views
+			console.log("---------");
+
+			console.log(app._currentYear);
+
+			app.yearActivity(app._currentYear, app._activity.get('id'), app._expense.get('id'));
 			// listActivities();
 		},
 	});

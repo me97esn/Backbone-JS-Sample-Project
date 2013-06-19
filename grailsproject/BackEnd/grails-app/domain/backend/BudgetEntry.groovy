@@ -5,6 +5,11 @@ class BudgetEntry {
     float amount
     String description
 
+    static mapping ={
+        version false
+    }
+
+
     static constraints = {
     }
 }

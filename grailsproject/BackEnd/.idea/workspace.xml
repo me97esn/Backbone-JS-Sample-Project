@@ -12,12 +12,12 @@
     <file path="/YearController.groovy" changelist="758d71c7-799e-4157-8de1-9836ebdb6861" time="1371559664825" ignored="false" />
     <file path="/Activity.groovy" changelist="758d71c7-799e-4157-8de1-9836ebdb6861" time="1371325189350" ignored="false" />
     <file path="/Expense.groovy" changelist="758d71c7-799e-4157-8de1-9836ebdb6861" time="1371325218081" ignored="false" />
-    <file path="/BudgetEntryController.groovy" changelist="758d71c7-799e-4157-8de1-9836ebdb6861" time="1371561797330" ignored="false" />
+    <file path="/BudgetEntryController.groovy" changelist="758d71c7-799e-4157-8de1-9836ebdb6861" time="1371624161554" ignored="false" />
     <file path="/BudgetEntry.groovy" changelist="758d71c7-799e-4157-8de1-9836ebdb6861" time="1371325198323" ignored="false" />
     <file path="/BootStrap.groovy" changelist="758d71c7-799e-4157-8de1-9836ebdb6861" time="1371242076235" ignored="false" />
     <file path="/index.html" changelist="758d71c7-799e-4157-8de1-9836ebdb6861" time="1371216067527" ignored="false" />
     <file path="/application.js" changelist="758d71c7-799e-4157-8de1-9836ebdb6861" time="1371217401938" ignored="false" />
-    <file path="/Dummy.groovy" changelist="758d71c7-799e-4157-8de1-9836ebdb6861" time="1371561575006" ignored="false" />
+    <file path="/Dummy.groovy" changelist="758d71c7-799e-4157-8de1-9836ebdb6861" time="1371624068350" ignored="false" />
     <file path="/.gitignore" changelist="758d71c7-799e-4157-8de1-9836ebdb6861" time="1371239403750" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -48,7 +48,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/grails-app/controllers/backend/BudgetEntryController.groovy" line="83" class="backend.BudgetEntryController" package="backend">
+      <breakpoint url="file://$PROJECT_DIR$/grails-app/controllers/backend/BudgetEntryController.groovy" line="84" class="backend.BudgetEntryController" package="backend">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -90,7 +90,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/grails-app/controllers/backend/BudgetEntryController.groovy" line="23" class="backend.BudgetEntryController" package="backend">
+      <breakpoint url="file://$PROJECT_DIR$/grails-app/controllers/backend/BudgetEntryController.groovy" line="26" class="backend.BudgetEntryController" package="backend">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -161,7 +161,7 @@
       <file leaf-file-name="BudgetEntry.groovy" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/grails-app/domain/backend/BudgetEntry.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="5" selection-start="58" selection-end="58" vertical-scroll-proportion="0.0">
+            <state line="10" column="0" selection-start="144" selection-end="144" vertical-scroll-proportion="-3.0">
               <folding />
             </state>
           </provider>
@@ -203,7 +203,7 @@
       <file leaf-file-name="BudgetEntryController.groovy" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/grails-app/controllers/backend/BudgetEntryController.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="0" selection-start="564" selection-end="564" vertical-scroll-proportion="0.3325893">
+            <state line="26" column="0" selection-start="706" selection-end="706" vertical-scroll-proportion="0.33333334">
               <folding>
                 <element signature="e#17#46#0" expanded="true" />
               </folding>
@@ -272,11 +272,11 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/grails-app/domain/backend/Year.groovy" />
         <option value="$PROJECT_DIR$/grails-app/domain/backend/Activity.groovy" />
-        <option value="$PROJECT_DIR$/grails-app/domain/backend/BudgetEntry.groovy" />
         <option value="$PROJECT_DIR$/grails-app/domain/backend/Expense.groovy" />
         <option value="$PROJECT_DIR$/grails-app/conf/UrlMappings.groovy" />
         <option value="$PROJECT_DIR$/grails-app/conf/BootStrap.groovy" />
         <option value="$PROJECT_DIR$/grails-app/controllers/backend/YearController.groovy" />
+        <option value="$PROJECT_DIR$/grails-app/domain/backend/BudgetEntry.groovy" />
         <option value="$PROJECT_DIR$/grails-app/controllers/backend/BudgetEntryController.groovy" />
       </list>
     </option>
@@ -478,14 +478,14 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2945946" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2496361" sideWeight="0.5310811" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Grails View" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Grails View" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32969433" sideWeight="0.7054054" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2496361" sideWeight="0.45945945" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18783784" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2496361" sideWeight="0.7054054" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3027027" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -601,16 +601,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/domain/backend/BudgetEntry.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="5" selection-start="58" selection-end="58" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/domain/backend/Expense.groovy">
       <provider selected="true" editor-type-id="text-editor">
         <state line="12" column="36" selection-start="284" selection-end="284" vertical-scroll-proportion="0.0">
@@ -656,9 +646,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/domain/backend/BudgetEntry.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="0" selection-start="144" selection-end="144" vertical-scroll-proportion="-3.0">
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/controllers/backend/BudgetEntryController.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="0" selection-start="564" selection-end="564" vertical-scroll-proportion="0.3325893">
+        <state line="26" column="0" selection-start="706" selection-end="706" vertical-scroll-proportion="0.33333334">
           <folding>
             <element signature="e#17#46#0" expanded="true" />
           </folding>
