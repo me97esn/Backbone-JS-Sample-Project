@@ -366,4 +366,11 @@ function slide(direction){
 	$('#activityListView').hide( "slide", {"direction":direction} );
 }
 
-
+$(document).bind('keydown', 'Alt+right', function assets() {
+   app.navigate('#year/2013', {trigger: true}); 
+   return false;
+});
+$(document).bind('keydown', 'Alt+left', function assets() {
+   app.navigate('#year/2012', {trigger: true}); 
+   return false;
+});
