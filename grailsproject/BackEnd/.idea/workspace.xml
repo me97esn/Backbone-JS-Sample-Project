@@ -90,6 +90,20 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/grails-app/controllers/backend/BudgetEntryController.groovy" line="23" class="backend.BudgetEntryController" package="backend">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
     </line_breakpoints>
     <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
@@ -183,7 +197,7 @@
       <file leaf-file-name="BudgetEntryController.groovy" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/grails-app/controllers/backend/BudgetEntryController.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="76" selection-start="751" selection-end="751" vertical-scroll-proportion="0.4336842">
+            <state line="34" column="100" selection-start="1031" selection-end="1031" vertical-scroll-proportion="0.6863158">
               <folding>
                 <element signature="e#17#46#0" expanded="true" />
               </folding>
@@ -641,7 +655,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/controllers/backend/BudgetEntryController.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="76" selection-start="751" selection-end="751" vertical-scroll-proportion="0.4336842">
+        <state line="34" column="100" selection-start="1031" selection-end="1031" vertical-scroll-proportion="0.6863158">
           <folding>
             <element signature="e#17#46#0" expanded="true" />
           </folding>
