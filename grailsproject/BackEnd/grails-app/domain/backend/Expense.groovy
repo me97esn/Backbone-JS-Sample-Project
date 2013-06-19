@@ -6,7 +6,7 @@ class Expense {
     static hasMany = [budgetEntryCollection: BudgetEntry]
 
     static constraints = {
-        budgetEntryCollection cascade: 'all-delete-orphan'
+
     }
 
     public Float getAmount(){

@@ -63,12 +63,8 @@ $(function() {
 		template: $("#budgetEntryListTmpl").template(),
 		events: { 
 			"change input": "amountChanged" ,
-			'keypress :input': 'logKey'
 		}, 
 
-		logKey: function(e) {
-			console.log(e.type, e.keyCode);
-		},
 		render: function() {
 			var self = this;
 			console.log("el: " + self.el);			
