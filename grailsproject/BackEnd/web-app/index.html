@@ -46,7 +46,7 @@
             <div id="activityList" class="activityList content">    
                 <script id="activityListTmpl" type="text/x-jquery-tmpl">
 
-                    <div class="activity">
+                    <div class="activity" id="activity${id}">
                     <a href="#y/${$('#currentYear').html()}/activity/${id}">
                     <div class="activity-name">${name}</div> 
                     <div id="activity-amount_${id}" class="activity-amount">${amount}</div>
@@ -59,18 +59,18 @@
             </div>
         </div>
 
-        <div id="expenseListView content" class="expenseListView">
+        <div id="expenseListView" class="expenseListView content">
             <div id="expenseList" class="expenseList">
                 <script id="expenseListTmpl" type="text/x-jquery-tmpl">
-                    <div class="expenseRow">
-                        <a href="#expense/${id}">
-                        <div class="expense-heading">
-                            <div  class="expense-name">${name}</div> 
-                            <div id="expense-amount_${id}" class="expense-amount">${amount}</div>
-                            <div class="middle"></div>
-                        </div>
-                        </a>
-                        <div class="budgetEntry" id="budgetEntryInExpense${id}"> </div>
+                    <div class="expenseRow" id="expenseRow${id}" >
+                    <a href="#expense/${id}">
+                    <div class="expense-heading">
+                    <div  class="expense-name">${name}</div> 
+                    <div id="expense-amount_${id}" class="expense-amount">${amount}</div>
+                    <div class="middle"></div>
+                    </div>
+                    </a>
+                    <div class="budgetEntry" id="budgetEntryInExpense${id}"> </div>
                     </div>
                 </script>
             </div>
@@ -92,7 +92,7 @@
                 </script>
             </div>
         </div>
-    </div>0
+    </div>
     <div id="year2012"  class="yearContainer">
     </div>
     <div id="year2013"  class="yearContainer">
