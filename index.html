@@ -47,13 +47,13 @@
                 <script id="activityListTmpl" type="text/x-jquery-tmpl">
 
                     <div class="activity" id="activity${id}">
-                    <a href="#y/${$('#currentYear').html()}/activity/${id}">
+                    <a href="#y/${$('#currentYear').html()}/activity/${id}" id="activity-href${id}" class="activity-href">
                     <div class="activity-name">${name}</div> 
                     <div id="activity-amount_${id}" class="activity-amount">${amount}</div>
                     <div class="middle"></div>
                     </a>
                     </div>
-                    <div class="expense expenseStyle" id="expenseInActivity${id}"> </div>
+                    <div class="expense expenseStyle activity${id}" id="expenseInActivity${id}"> </div>
 
                 </script>
             </div>
@@ -92,7 +92,7 @@
                 </script>
             </div>
         </div>
-    </div>0
+    </div>
     <div id="year2012"  class="yearContainer">
     </div>
     <div id="year2013"  class="yearContainer">

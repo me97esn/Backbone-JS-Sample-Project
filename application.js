@@ -31,12 +31,25 @@ $(function() {
         render: function() {
             console.log("+ Rendering the ActivityListView");
             var self = this;
+//            var c = $('#activityList').children().length;
+//            if (c < 1) {
+//                console.log("¤¤¤¤¤¤¤¤");
+//            }
 
             $('#activityList').empty();
+
             $.tmpl(self.activityListTemplate, self.model.toJSON())
                     // .hide()
                     .appendTo(self.el);
             // .show( 'blind', 500 );
+            $('.activity-href').click(function() {
+                var activityId = $(this).attr("id").substring(13);
+                var c = $("#expenseInActivity" + activityId).children().length;
+                if (c > 0) {
+                    $(".activity" + activityId).toggle('hide');
+                }
+            });
+//            }
             return this;
         },
     });
@@ -47,14 +60,17 @@ $(function() {
         render: function() {
             var self = this;
             console.log("++ Rendering the ExpenseListView with data: " + self.model);
-            // Hide all others
-            $.tmpl(
-                    self.expenseListTemplate,
-                    self.model.get('expenseCollection'))
-                    .hide()
-                    .appendTo(self.el)
-                    .show('blind', 500);
+            var c = $(self.el).children().length;
+            if (c < 1) {
 
+                // Hide all others
+                $.tmpl(
+                        self.expenseListTemplate,
+                        self.model.get('expenseCollection'))
+                        .hide()
+                        .appendTo(self.el)
+                        .show('blind', 500);
+            }
             return this;
         },
     });
@@ -68,34 +84,22 @@ $(function() {
         render: function() {
             var self = this;
             console.log("el: " + self.el);
-            console.log("+++ Rendering the BudgetEntryListView with data: " + self.model.get('budgetEntryCollection'));
-            $('#budgetEntryList').empty();
+            var c = $(self.el).children().length;
+            if (c < 1) {
+                $('#budgetEntryList').empty();
+                $.tmpl(
+                        self.template,
+                        self.model.get('budgetEntryCollection'))
+                        .hide()
+                        .appendTo(self.el)
+                        .show('blind', 500);
 
-            // if ($(self.el).is(":empty"))
-            // {
-            //     $.tmpl(self.template,
-            //             self.model.get('budgetEntryCollection'))
-            //             .hide()
-            //             .appendTo(self.el)
-            //             .show('blind', 500);
-            // }
-            // else {
-            //     $(self.el).empty()
-            // }
+                $(".budgetEntry-title").draggable({helper: 'clone', revert: false, cursor: 'move', start: handleDrag, refreshPositions: true});
+                $(".budgetEntry").droppable({tolerance: 'touch', cursor: 'pointer', over: handleOverTarget, drop: handleDrop});
+                $(".activity").droppable({tolerance: 'touch', over: handleOverActivity});
+                $(".expenseRow").droppable({tolerance: 'touch', over: handleOverExpense});
 
-
-            $.tmpl(
-                    self.template,
-                    self.model.get('budgetEntryCollection'))
-                    .hide()
-                    .appendTo(self.el)
-                    .show('blind', 500);
-
-            $(".budgetEntry-title").draggable({revert: false, cursor: 'move', start: handleDrag});
-            $(".budgetEntry").droppable({tolerance: 'touch', drop: handleDrop});
-            $(".activity").droppable({tolerance: 'touch', over: handleOverActivity});
-            $(".expenseRow").droppable({tolerance: 'touch', over: handleOverExpense});
-
+            }
 
             return this;
         },
@@ -235,8 +239,8 @@ $(function() {
 
 
             $.ajax({
-//                url: 'data/year' + theYear + '.json',
-                url: "http://localhost:8080/BackEnd/rest/year/" + theYear + ".json",
+                url: 'data/year' + theYear + '.json',
+//                url: "http://localhost:8080/BackEnd/rest/year/" + theYear + ".json",
                 // url: "http://172.29.194.195:8080/DemoProject/webresources/demo2.entity.yearobj/1",
 
                 dataType: 'json',
@@ -270,8 +274,8 @@ $(function() {
             console.log("Get the budgetEntry " + expense_id + " with rest...");
 
             $.ajax({
-                url: 'http://localhost:8080/BackEnd/rest/expense/' + expense_id + '.json',
-//                url: 'data/expense' + expense_id + '.json',
+//                url: 'http://localhost:8080/BackEnd/rest/expense/' + expense_id + '.json',
+                url: 'data/expense' + expense_id + '.json',
                 dataType: 'json',
                 data: {},
                 success: function(data) {
@@ -291,8 +295,8 @@ $(function() {
             var self = this;
             console.log("Get the activity " + activity_id + " with rest...");
             $.ajax({
-                url: 'http://localhost:8080/BackEnd/rest/activity/' + activity_id + '.json',
-//                url: 'data/activity' + activity_id + '.json',
+//                url: 'http://localhost:8080/BackEnd/rest/activity/' + activity_id + '.json',
+                url: 'data/activity' + activity_id + '.json',
                 dataType: 'json',
                 data: {},
                 success: function(data) {
@@ -379,6 +383,7 @@ function handleOverActivity() {
     var activityId = activity.attr("id").substring(8);
     console.log("activity " + activityId);
     var c = $("#expenseInActivity" + activityId).children().length;
+    $(this).css('cursor', 'move');
 
     console.log(c);
 
@@ -388,8 +393,8 @@ function handleOverActivity() {
         var self = app;
         console.log("Get the activity " + activityId + " with rest...");
         $.ajax({
-            url: 'http://localhost:8080/BackEnd/rest/activity/' + activity_id + '.json',
-//            url: 'data/activity' + activityId + '.json',
+//            url: 'http://localhost:8080/BackEnd/rest/activity/' + activity_id + '.json',
+            url: 'data/activity' + activityId + '.json',
             dataType: 'json',
             data: {},
             success: function(data) {
@@ -418,12 +423,38 @@ function handleOverActivity() {
 
 }
 
+function fetchExpense(self)
+{
+    console.log("Get the budgetEntry " + expenseId + " with rest...");
+
+    $.ajax({
+//            url: 'http://localhost:8080/BackEnd/rest/expense/' + expense_id + '.json',
+        url: 'data/expense' + expenseId + '.json',
+        dataType: 'json',
+        data: {},
+        success: function(data) {
+            console.log("Got expense from file: " + data);
+            self._expense = new Expense(data)
+            self.listExpenses();
+
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.log(jqXHR.status);
+            console.log(textStatus);
+            console.log(errorThrown);
+        }
+    });
+
+}
+
+
 function handleOverExpense() {
     console.log("handleOver");
     var expense = $(this);
     var expenseId = expense.attr("id").substring(10);
     console.log("expenseRow " + expenseId);
     var c = $("#budgetEntryInExpense" + expenseId).children().length;
+    $(this).css('cursor', 'move');
 
     console.log(c);
 
@@ -435,8 +466,8 @@ function handleOverExpense() {
         console.log("Get the budgetEntry " + expenseId + " with rest...");
 
         $.ajax({
-            url: 'http://localhost:8080/BackEnd/rest/expense/' + expense_id + '.json',
-//            url: 'data/expense' + expenseId + '.json',
+//            url: 'http://localhost:8080/BackEnd/rest/expense/' + expense_id + '.json',
+            url: 'data/expense' + expenseId + '.json',
             dataType: 'json',
             data: {},
             success: function(data) {
@@ -465,6 +496,15 @@ function handleDrag() {
     dragId = $(this);
 }
 
+function handleOverTarget() {
+    $(this).css('cursor', 'crosshair');
+}
+function handleOutTarget() {
+    $(this).css('cursor', 'move');
+}
+
+
+
 
 function handleDrop() {
     var element = $(this)
@@ -477,7 +517,9 @@ function handleDrop() {
 
     dragId.appendTo(element);
 
-    moveBudgetEntry(data)
+    $(this).css('cursor', 'pointer');
+
+//    moveBudgetEntry(data)
     dragId = null;
 }
 
